@@ -8,15 +8,77 @@
 
 ### 模块设计
 
-**Base模块封装操作元素的公共方法**
-**Check_config_script模块存放环境检查的脚本**
+
+
+**Base模块封装操作元素的公共方法，以及断言方法**
+
+- assert_method.py封装断言的方法，断言失败截图，按需自己可以进行封装
+- base封装页面元素操作方法
+
 **Common模块是封装的读取配置文件的公共方法，类似于util工具类**
+
+- publicMethod，封装公共方法，后面可能会讲一些方法分类创建不同的py模块进行管理，便于维护
+- Log.py，封装日志操作方法
+- logging.config.yml，logging配置文件
+- file_option.py，封装文件操作方法
+
 **Conf模块是存放全局配置文件**
+
+- config.yaml中存放全局配置文件，当前包含两个
+  - allure_environment：存放allure报告中环境描述初始化文件
+  - test_info：测试地址
+- selenium_config.yaml：存放selenium远程分布式调用配置文件
+
 **Grid_server模块存放selenium-server（hub和node）启动bat脚本，以及三种selenium三种浏览器命令行参数的入口**
+
+- Selenium_server_dir中存放了3.141.0版本的selenium-server-standalone的jar包
+- selenium_server中存放了在linux中启动单个hub和node的bat脚本
+- selenium_run_script中存放了启动本地分布式调试的脚本
+
 **Logs模块，用于生成日志文件**
+
+- 使用pyteset本身集成的日志插件
+- 同时封装了python自带的logging模块
+
 **PageObject模块提取页面对象封装公共操作方法**
+
+- 使用yaml文件进行页面元素的管理
+- 使用elem_params.py进行yaml文件注入，生成yaml文件对象
+- 页面对象初始化页面元素对象，调用base层，封装元素操作方法
+
 **Report模块，存放测试报告，以及测试报告的生成模板allure**
+
+- report模块使用allure进行测试报告生成
+- 可以自定义启用不同的测试分析图表用于测试结果分析
+- 适配分布式（支持本地以及远程分布式，支持docker）测试报告生成，可以生成chrome，firefox，IE三种测试报告
+- 内置测试图片存放路径，如果需要每次测试都清理以前的图片，可以添加allure命令进行清理
+
 **TestCases模块，用于存放测试case**
+
+- 使用conftest.py进行页面对象注入，类似unintest的setup，teardown的操作，通过装饰器进行控制
+- 测试case，页面的测试用例，根据模块来进行划分
+
+**其他文件说明**
+
+.gitlab-ci.yml：gitlab-ci操作
+
+conftest.py：封账了本地测试driver，分布式driver方法，定义了钩子函数，进行pytest功能拓展
+
+main.py：本地分布式执行入口
+
+pytest.ini：配置了pytest的日志功能，以及测试用例扫描
+
+requirements.txt：框架运行所需要的jar包
+
+run.py：本地调试入口，ci集成测试入口
+
+start_run_all_browser.bat：启动三种浏览器本地测试脚本
+
+start_run_all_browser.py：启动三种浏览器远程docker环境分布式测试脚本
+
+start_server_docker.py：远程docker环境，进行seleniumdocker环境镜像的拉取和配置
+
+start_server_windows.bat：启动本地分布式hub与node节点的脚本
 
 ---
 
@@ -160,7 +222,7 @@ docker run -d -p 5900:5900 --link hub:hub selenium/node-chrome-debug
 
 - 可以执行start_server_docker.py脚本直接创建docker服务，脚本会自动检查docker镜像仓库是否含有所需镜像，自动拉取，自动创建所需容器，以前创建的含有selenium名字的镜像会被删除
 
-查看Linux下浏览器运行的图形界面
+**查看Linux下浏览器运行的图形界面**
 
 使用vnc viewer，下载地址：`https://www.realvnc.com/en/connect/download/viewer/windows/`
 
@@ -212,56 +274,97 @@ windows分布式调试：
 
 下面详细说明如何添加一条用例，以登录界面演示
 
-1、在PageObject模块创建一个login_page.py
+1、在PageObject下Login_page模块新建一个页面元素yaml文件，Login_page.yaml
 
-2、封装login页面操作元素对象
+字段说明：
+
+- desc：yaml文件说明
+- parameters：参数说明
+  - elem_name：元素别名（你调用的时候需要使用）
+  - desc：元素描述（例如用户输入框的名称）
+  - data：里面是一个字典，元素定位方式，以及元素定位方式的取值
+
+~~~ yaml
+#封装需要操作的元素对象
+desc: "登录页面元素操作对象"
+parameters:
+  - elem_name: "Username"
+    desc: "用户输入框名称"
+    data: {
+      method: "NAME",
+      value: "Username"
+    }
+
+  - elem_name: "Password"
+    desc: "密码输入框名称"
+    data: {
+      method: "NAME",
+      value: "Password"
+    }
+
+~~~
+
+2、在PageObject模块下的elem_params.py文件中进行Login_page.yaml注册，生成一个yaml文件对象，初始化传递两个参数，一个是模块名，一个是yaml配置文件名
+
+~~~python
+# 注册yaml文件对象
+class Login_page_elem(Elem_params):
+    def __init__(self):
+        super(Login_page_elem, self).__init__('Login_page', 'Login_page.yaml')
+~~~
+
+3、在PageObject下Login_page模块创建一个login_page.py封装login页面操作元素，导入Login_page.yaml文件对象，初始化，然后获取yaml文件中封装的元素，底层通过传入locator定位器（元组），进行页面元素操作
 
 ~~~ python
-# coding:utf-8
+# !/user/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2020/5/12 21:11
+# @Author  : chineseluo
+# @Email   : 848257135@qq.com
+# @File    : run.py
+# @Software: PyCharm
 from Base.base import Base
-from selenium.webdriver.common.by import By
 from selenium import webdriver
+from PageObject.elem_params import Login_page_elem
 
 
-# 封装速涡手游加速器登录页面操作对象及各个元素及操作方法
+# 封装速涡手游加速器登录页面操作对象操作方法
 class Login_page(Base):
     def __init__(self, driver):
+        # 初始化页面元素对象，即yaml文件对象
+        self.elem_locator = Login_page_elem()
+        # 初始化driver
         super().__init__(driver)
 
     def login_by_config_url(self):
         """
-            从配置文件config.ini获取登录地址
+            从配置文件config.yaml获取登录地址
         @return: 登录地址
         """
         return super().login_by_config_url()
-
-    def get_home_page_url(self, url):
-        """
-            登录测试地址URL
-        @param url: 登录页面URL
-        """
-        self.get_url(url)
 
     def get_username_attribute_value(self):
         """
             获得账号输入框的placeholder值
         @return: 获得账号输入框的placeholder值
         """
-        return super().get_placeholder((By.NAME, "Username"))
+        elem = self.elem_locator.get_locator("Username")
+        return super().get_placeholder(elem)
 
     def get_password_attribute_value(self):
         """
             获得密码输入框的placeholder值
         @return:获得密码输入框的placeholder值
         """
-        return super().get_placeholder((By.NAME, "Password"))
+        elem = self.elem_locator.get_locator("Password")
+        return super().get_placeholder(elem)
 ~~~
 
 
 
-3、在TestCases下面新建一个包，例如Login模块，测试登录页面
+4、在TestCases下面新建一个包，例如Login模块，测试登录页面
 
-4、在Login下面创建一个conftest.py和test_login_page_case.py
+5、在Login下面创建一个conftest.py和test_login_page_case.py
 
 conftest.py中指定需要加载的测试页面对象，使用scope级别为function
 
@@ -303,7 +406,7 @@ class Test_login_page_case:
         Assert_method.assert_equal_screen_shot(function_driver, (username_input_attribute_value, "手机号码"))
 ~~~
 
-5、执行用例
+6、执行用例
 
 执行用例可以通过两种常用的方法进行
 

@@ -1,29 +1,29 @@
-# coding:utf-8
+# !/user/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2020/5/12 21:11
+# @Author  : chineseluo
+# @Email   : 848257135@qq.com
+# @File    : run.py
+# @Software: PyCharm
 from Base.base import Base
-from selenium.webdriver.common.by import By
 from selenium import webdriver
 from PageObject.elem_params import Login_page_elem
 
 
-# 封装速涡手游加速器登录页面操作对象及各个元素及操作方法
+# 封装速涡手游加速器登录页面操作对象操作方法
 class Login_page(Base):
     def __init__(self, driver):
+        # 初始化页面元素对象，即yaml文件对象
         self.elem_locator = Login_page_elem()
+        # 初始化driver
         super().__init__(driver)
 
     def login_by_config_url(self):
         """
-            从配置文件config.ini获取登录地址
+            从配置文件config.yaml获取登录地址
         @return: 登录地址
         """
         return super().login_by_config_url()
-
-    def get_home_page_url(self, url):
-        """
-            登录测试地址URL
-        @param url: 登录页面URL
-        """
-        self.get_url(url)
 
     def get_username_attribute_value(self):
         """

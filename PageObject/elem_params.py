@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
 # !/user/bin/env python
-# @Time    : 2020/6/4 9:35
-# @Author  : luozhongwen
-# @Email   : luozw@inhand.com.cn
-# @File    : elem_params.py
+# -*- coding: utf-8 -*-
+# @Time    : 2020/5/12 21:11
+# @Author  : chineseluo
+# @Email   : 848257135@qq.com
+# @File    : run.py
 # @Software: PyCharm
 
 import os
@@ -80,6 +80,7 @@ class Elem_params:
                     logging.error("元素名称：{}，此元素定位方式异常，定位元素值异常，请检查！！！".format(elem_name))
 
 
+# 注册yaml文件对象
 class Login_page_elem(Elem_params):
     def __init__(self):
         super(Login_page_elem, self).__init__('Login_page', 'Login_page.yaml')

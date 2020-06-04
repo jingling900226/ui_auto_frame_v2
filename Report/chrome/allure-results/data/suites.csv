@@ -1,8 +1,0 @@
-"Status","Name","Duration in ms","Description"
-"passed","TestCases.Register.test_register_page_case.Test_register_page_case#test_DLZC9","3310","测试登录"
-"passed","TestCases.Register.test_register_page_case.Test_register_page_case#test_DLZC11","3325","测试登录"
-"passed","TestCases.Register.test_register_page_case.Test_register_page_case#test_DLZC10","3714","测试登录"
-"passed","TestCases.Register.test_register_page_case.Test_register_page_case#test_DLZC12","3217","测试登录"
-"passed","TestCases.Register.test_register_page_case.Test_register_page_case#test_DLZC7","3018","测试登录"
-"passed","TestCases.Login.test_login_page_case.Test_login_page_case#test_DLZC1","3825","测试登录"
-"passed","TestCases.Register.test_register_page_case.Test_register_page_case#test_DLZC8","3688","测试登录"

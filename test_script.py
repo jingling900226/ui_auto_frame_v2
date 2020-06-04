@@ -10,9 +10,11 @@ import logging
 from Common.publicMethod import PubMethod
 from PageObject.elem_params import Login_page_elem
 from selenium.webdriver.common.by import By
+
 login_elem_data = os.path.join(os.path.dirname(__file__), "Login_page.yaml")
 
 
+# 测试代码用的，不用关注
 def get_elem(login_elem_data, elem_name):
     elems_info = PubMethod.read_yaml(login_elem_data)
     print(elems_info)
@@ -21,8 +23,6 @@ def get_elem(login_elem_data, elem_name):
             elem_locator = ("By.{}".format(item["data"]["method"]), item["data"]["value"])
             method = item["data"]["method"]
             value = item["data"]["value"]
-            print(method)
-            print(value)
             logging.info("元素定位方式为：{}，元素对象值为：{}".format(method, value))
             if method == "ID" and value is not None:
                 return elem_locator
@@ -45,12 +45,9 @@ def get_elem(login_elem_data, elem_name):
 
 
 if __name__ == '__main__':
-
     log_obj = Login_page_elem()
     elem = log_obj.get_locator("Password")
     print(elem)
     print(type(By.NAME))
-    #print(type(elem[0]))
+    # print(type(elem[0]))
     print(type(elem))
-
-

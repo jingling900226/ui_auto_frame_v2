@@ -1,4 +1,4 @@
-image: registry.inhand.local/inhandtest/python3:latest
+image: XXX
 stages:
   - test
 

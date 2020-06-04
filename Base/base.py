@@ -8,10 +8,9 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 import logging
-from Common.config_option import Config_option
 from Common.publicMethod import PubMethod
 
-# conf_path = os.path.join(os.path.dirname(__file__).rsplit("/", 2)[0], "Conf", "config.yaml")
+
 conf_path = os.path.abspath("./Conf/config.yaml")
 
 
@@ -56,7 +55,6 @@ class Base:
         self.driver = driver
         self.timeout = 10
         self.poll_frequency = 0.5
-        self.config = Config_option()
 
     def get_url(self, url):
         """
