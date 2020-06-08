@@ -145,11 +145,21 @@ class PubMethod:
 
     @staticmethod
     def random_string(strings=string.ascii_letters, length=15):
+        """
+        获取随机字符串
+        @param strings:
+        @param length:
+        @return:
+        """
         values = ''.join(random.choices(strings, k=length))
         return values
 
     @staticmethod
     def get_rand_ip():
+        """
+        获取随机IP
+        @return:
+        """
         base_ip = '{}.{}.{}.{}'.format(random.randint(1, 255), random.randint(0, 255), random.randint(0, 255),
                                        random.randint(0, 255))
         return base_ip
@@ -171,6 +181,11 @@ class PubMethod:
 
     @staticmethod
     def get_file_md5(file_path):
+        """
+        获取文件的md5
+        @param file_path:
+        @return:
+        """
         with open(file_path, 'rb') as f:
             md5_obj = hashlib.md5()
             md5_obj.update(f.read())
@@ -264,6 +279,14 @@ class PubMethod:
 
     @staticmethod
     def create_docker_hub_container(base_url, image, name, ports):
+        """
+        创建selenium的hub节点
+        @param base_url:
+        @param image:
+        @param name:
+        @param ports:
+        @return:
+        """
         client = docker.DockerClient(base_url=base_url)
         try:
             client.containers.run(
@@ -281,6 +304,15 @@ class PubMethod:
 
     @staticmethod
     def create_docker_node_container(base_url, image, name, ports, links):
+        """
+        在docker中创建selenium的node节点
+        @param base_url: docker的URL
+        @param image: 镜像
+        @param name: 命名
+        @param ports: 端口
+        @param links: 连接
+        @return:
+        """
         client = docker.DockerClient(base_url=base_url)
         try:
             client.containers.run(

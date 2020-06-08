@@ -13,20 +13,27 @@ from Common.publicMethod import PubMethod
 from selenium.webdriver.chrome.options import Options as CO
 from selenium.webdriver.firefox.options import Options as FO
 from selenium.webdriver.ie.options import Options as IEO
-
-
+# 读取selenium分布式配置文件
 selenium_config_path = os.path.join(os.path.dirname(__file__), "Conf", "selenium_config.yaml")
 selenium_config = PubMethod.read_yaml(selenium_config_path)
 
 
-# 定义钩子函数hook进行命令行定义浏览器传参，默认chrome,定义浏览器启动方式传参，默认启动
 def pytest_addoption(parser):
+    """
+    定义钩子函数hook进行命令行定义浏览器传参，默认chrome,定义浏览器启动方式传参，默认启动
+    @param parser:
+    @return:
+    """
     parser.addoption("--browser", action="store", default="chrome", help="browser option: firefox or chrome or ie")
     parser.addoption("--browser_opt", action="store", default="open", help="browser GUI open or close")
 
 
-# 定义钩子函数hook进行测试用例name和_nodeid输出
 def pytest_collection_modifyitems(items):
+    """
+    定义钩子函数hook进行测试用例name和_nodeid输出
+    @param items:
+    @return:
+    """
     for item in items:
         item.name = item.name.encode("utf-8").decode("unicode_escape")
         logging.info(item.name)
@@ -36,6 +43,11 @@ def pytest_collection_modifyitems(items):
 
 @pytest.fixture(scope="function")
 def function_driver(request):
+    """
+    非分布式driver注入
+    @param request:
+    @return:
+    """
     browser = request.config.getoption("--browser")
     browser_opt = request.config.getoption("--browser_opt")
     print("获取命令行传参：{}".format(request.config.getoption("--browser")))
@@ -71,6 +83,11 @@ def function_driver(request):
 
 @pytest.fixture(scope="function")
 def function_remote_driver(request):
+    """
+    分布式driver注入
+    @param request:
+    @return:
+    """
     browser = request.config.getoption("--browser")
     print("获取命令行传参：{}".format(request.config.getoption("--browser")))
     driver = Remote(command_executor=selenium_config["selenium_hub_url"],

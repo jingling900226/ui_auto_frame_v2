@@ -10,6 +10,11 @@ from PageObject.Login_page.login_page import Login_page
 
 @pytest.fixture(scope="function")
 def login_page_class_load(function_driver):
+    """
+    注入登录页面对象
+    @param function_driver:
+    @return:
+    """
     login_page = Login_page(function_driver)
     yield login_page
 

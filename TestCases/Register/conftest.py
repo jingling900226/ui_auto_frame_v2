@@ -13,21 +13,35 @@ from PageObject.Register_page.register_page import Register_page
 
 @pytest.fixture(scope="function")
 def login_page_class_load(function_driver):
+    """
+    注入等页面对象
+    @param function_driver:
+    @return:
+    """
     login_page = Login_page(function_driver)
     yield login_page
 
 
 @pytest.fixture(scope="function")
 def buy_page_class_load(function_driver):
+    """
+    注入购买页面对象
+    @param function_driver:
+    @return:
+    """
     buy_page = Buy_page(function_driver)
     yield buy_page
 
 
 @pytest.fixture(scope="function")
 def register_page_class_load(function_driver):
+    """
+    注入注册页面对象
+    @param function_driver:
+    @return:
+    """
     register_page = Register_page(function_driver)
     yield register_page
 
 
-# if __name__ == '__main__':
-#     session_remote_driver()
+

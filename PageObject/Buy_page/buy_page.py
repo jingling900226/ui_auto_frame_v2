@@ -10,5 +10,9 @@ class Buy_page(Base):
         self.elem_locator = Buy_page_elem()
 
     def find_button_buy(self):
+        """
+        查找购买按钮文本
+        @return:
+        """
         elem = self.elem_locator.get_locator("ProductBuyBtn")
         return self.get_text_by_elements(elem)
