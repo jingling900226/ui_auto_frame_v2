@@ -5,7 +5,7 @@
 # @File    : conftest.py
 # @Software: PyCharm
 import pytest
-from PageObject.Login_page.login_page import Login_page
+from PageObject.Login_page.loginPage import LoginPage
 
 
 @pytest.fixture(scope="function")
@@ -15,7 +15,7 @@ def login_page_class_load(function_driver):
     @param function_driver:
     @return:
     """
-    login_page = Login_page(function_driver)
+    login_page = LoginPage(function_driver)
     yield login_page
 
 

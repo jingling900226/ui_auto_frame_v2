@@ -1,11 +1,11 @@
 # coding:utf-8
 import pytest
 import allure
-from Base.assert_method import Assert_method
+from Base.assertMethod import AssertMethod
 
 
 @allure.feature("Register_page_case")
-class Test_register_page_case:
+class Test_RegisterPageCase:
 
     @allure.story("Register")
     @allure.severity("normal")
@@ -17,7 +17,7 @@ class Test_register_page_case:
         login_page_class_load.login_by_config_url()
         login_page_class_load.click_register_btn()
         username_input_attribute_value = register_page_class_load.get_username_attribute_value()
-        Assert_method.assert_equal_screen_shot(function_driver, (username_input_attribute_value, "手机号码"))
+        AssertMethod.assert_equal_screen_shot(function_driver, (username_input_attribute_value, "手机号码"))
 
     @allure.story("Register")
     @allure.severity("normal")
@@ -30,7 +30,7 @@ class Test_register_page_case:
         login_page_class_load.click_register_btn()
         register_page_class_load.click_other_register_btn()
         res = register_page_class_load.check_page_is_other_page()
-        Assert_method.assert_false_screen_shot(function_driver, res)
+        AssertMethod.assert_false_screen_shot(function_driver, res)
 
     @allure.story("Register")
     @allure.severity("normal")
@@ -43,7 +43,7 @@ class Test_register_page_case:
         login_page_class_load.click_register_btn()
         register_page_class_load.click_login_btn()
         login_title = register_page_class_load.get_login_page_title()
-        Assert_method.assert_equal_screen_shot(function_driver, (login_title, "登录"))
+        AssertMethod.assert_equal_screen_shot(function_driver, (login_title, "登录"))
 
     @allure.story("Register")
     @allure.severity("normal")
@@ -56,7 +56,7 @@ class Test_register_page_case:
         login_page_class_load.click_register_btn()
         register_page_class_load.click_register_btn()
         error_text = register_page_class_load.get_error_text()
-        Assert_method.assert_equal_screen_shot(function_driver, (error_text, "登录"))
+        AssertMethod.assert_equal_screen_shot(function_driver, (error_text, "登录"))
 
     @allure.story("Register")
     @allure.severity("normal")
@@ -69,7 +69,7 @@ class Test_register_page_case:
         login_page_class_load.click_register_btn()
         register_page_class_load.click_code_btn()
         error_text = register_page_class_load.get_error_text()
-        Assert_method.assert_equal_screen_shot(function_driver, (error_text, "用户名不能为空"))
+        AssertMethod.assert_equal_screen_shot(function_driver, (error_text, "用户名不能为空"))
 
     @allure.story("Register")
     @allure.severity("normal")
@@ -83,8 +83,8 @@ class Test_register_page_case:
         register_page_class_load.username_send_keys(1)
         register_page_class_load.click_register_btn()
         error_text = register_page_class_load.get_error_text()
-        Assert_method.assert_equal_screen_shot(function_driver, (error_text, "手机号码格式不正确"))
+        AssertMethod.assert_equal_screen_shot(function_driver, (error_text, "手机号码格式不正确"))
 
 
 if __name__ == '__main__':
-    pytest.main(["test_register_page_case.py"])
+    pytest.main(["Test_RegisterPageCase.py"])

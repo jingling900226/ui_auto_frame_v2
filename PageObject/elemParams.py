@@ -17,7 +17,7 @@ config_path = os.path.join(root_dir, 'PageObject')
 config_path = os.path.abspath(config_path)
 
 
-class Elem_params:
+class ElemParams:
     def __init__(self, dir_name, file_name, root_dir_name=config_path):
         self.elem_name = []
         self.desc = []
@@ -81,20 +81,20 @@ class Elem_params:
 
 
 # 注册yaml文件对象
-class Login_page_elem(Elem_params):
+class LoginPageElem(ElemParams):
     def __init__(self):
-        super(Login_page_elem, self).__init__('Login_page', 'Login_page.yaml')
+        super(LoginPageElem, self).__init__('Login_page', 'Login_page.yaml')
 
 
-class Buy_page_elem(Elem_params):
+class BuyPageElem(ElemParams):
     def __init__(self):
-        super(Buy_page_elem, self).__init__('Buy_page', 'Buy_page.yaml')
+        super(BuyPageElem, self).__init__('Buy_page', 'Buy_page.yaml')
 
 
-class Register_page_elem(Elem_params):
+class RegisterPageElem(ElemParams):
     def __init__(self):
-        super(Register_page_elem, self).__init__('Register_page', 'Register_page.yaml')
+        super(RegisterPageElem, self).__init__('Register_page', 'Register_page.yaml')
 
 
 if __name__ == '__main__':
-    login_page = Login_page_elem()
+    login_page = LoginPageElem()

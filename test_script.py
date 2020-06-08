@@ -8,7 +8,7 @@
 import os
 import logging
 from Common.publicMethod import PubMethod
-from PageObject.elem_params import Login_page_elem
+from PageObject.elemParams import Login_page_elem
 from selenium.webdriver.common.by import By
 
 login_elem_data = os.path.join(os.path.dirname(__file__), "Login_page.yaml")

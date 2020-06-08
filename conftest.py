@@ -13,6 +13,7 @@ from Common.publicMethod import PubMethod
 from selenium.webdriver.chrome.options import Options as CO
 from selenium.webdriver.firefox.options import Options as FO
 from selenium.webdriver.ie.options import Options as IEO
+
 # 读取selenium分布式配置文件
 selenium_config_path = os.path.join(os.path.dirname(__file__), "Conf", "selenium_config.yaml")
 selenium_config = PubMethod.read_yaml(selenium_config_path)
@@ -90,9 +91,13 @@ def function_remote_driver(request):
     """
     browser = request.config.getoption("--browser")
     print("获取命令行传参：{}".format(request.config.getoption("--browser")))
-    driver = Remote(command_executor=selenium_config["selenium_hub_url"],
+    driver = Remote(command_executor=selenium_config["selenium_config"]["selenium_hub_url"],
                     desired_capabilities={'platform': 'ANY', 'browserName': browser, 'version': '',
                                           'javascriptEnabled': True})
     yield driver
     # driver.close()
     driver.quit()
+
+
+if __name__ == '__main__':
+    print(selenium_config)

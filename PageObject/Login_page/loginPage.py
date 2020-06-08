@@ -7,14 +7,14 @@
 # @Software: PyCharm
 from Base.base import Base
 from selenium import webdriver
-from PageObject.elem_params import Login_page_elem
+from PageObject.elemParams import LoginPageElem
 
 
 # 封装速涡手游加速器登录页面操作对象操作方法
-class Login_page(Base):
+class LoginPage(Base):
     def __init__(self, driver):
         # 初始化页面元素对象，即yaml文件对象
-        self.elem_locator = Login_page_elem()
+        self.elem_locator = LoginPageElem()
         # 初始化driver
         super().__init__(driver)
 
@@ -128,6 +128,6 @@ class Login_page(Base):
 
 
 if __name__ == "__main__":
-    home_page = Login_page(webdriver.Chrome())
+    home_page = LoginPage(webdriver.Chrome())
     home_page.login_by_config_url()
     print(home_page.find_button_login())

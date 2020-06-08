@@ -6,9 +6,9 @@
 # @Software: PyCharm
 
 import pytest
-from PageObject.Login_page.login_page import Login_page
-from PageObject.Buy_page.buy_page import Buy_page
-from PageObject.Register_page.register_page import Register_page
+from PageObject.Login_page.loginPage import LoginPage
+from PageObject.Buy_page.buyPage import Buy_page
+from PageObject.Register_page.registerPage import RegisterPage
 
 
 @pytest.fixture(scope="function")
@@ -18,7 +18,7 @@ def login_page_class_load(function_driver):
     @param function_driver:
     @return:
     """
-    login_page = Login_page(function_driver)
+    login_page = LoginPage(function_driver)
     yield login_page
 
 
@@ -40,7 +40,7 @@ def register_page_class_load(function_driver):
     @param function_driver:
     @return:
     """
-    register_page = Register_page(function_driver)
+    register_page = RegisterPage(function_driver)
     yield register_page
 
 

@@ -8,11 +8,11 @@
 import os
 
 
-class File_option():
+class FileOption:
     @staticmethod
-    def file_mkdir(filepath):
-        if not os.path.exists(filepath):
-            os.mkdir(filepath)
+    def file_mkdir(file_path):
+        if not os.path.exists(file_path):
+            os.mkdir(file_path)
         else:
-            print("{}目录已存在，不需要再次创建".format(filepath))
+            print("{}目录已存在，不需要再次创建".format(file_path))
 

@@ -6,14 +6,14 @@
 # @File    : run.py
 # @Software: PyCharm
 from Base.base import Base
-from PageObject.elem_params import Register_page_elem
+from PageObject.elemParams import RegisterPageElem
 
 
 # 封装速涡手游加速器注册页面操作对象及各个元素及操作方法
-class Register_page(Base):
+class RegisterPage(Base):
     def __init__(self, driver):
         super().__init__(driver)
-        self.elem_locator = Register_page_elem()
+        self.elem_locator = RegisterPageElem()
 
     def get_username_attribute_value(self):
         """

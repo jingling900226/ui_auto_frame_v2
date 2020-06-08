@@ -15,7 +15,7 @@ import xlrd
 import allure
 from IPy import IP
 from hashlib import md5
-from Common.file_option import File_option
+from Common.fileOption import FileOption
 from datetime import datetime, timedelta
 
 
@@ -267,7 +267,7 @@ class PubMethod:
             picture_time = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
             file_path = "Report/picture"
             file_name = picture_time + ".png"
-            File_option.file_mkdir(file_path)
+            FileOption.file_mkdir(file_path)
             res = driver.get_screenshot_as_file(file_path + '/' + file_name)
             picture_url = file_path + '/' + file_name
             allure.attach.file(picture_url, attachment_type=allure.attachment_type.PNG)
