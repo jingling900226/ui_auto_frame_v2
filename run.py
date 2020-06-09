@@ -10,6 +10,7 @@ import sys
 import json
 import logging
 import pytest
+from os import path
 from Common.publicMethod import PubMethod
 
 root_dir = os.path.dirname(__file__)
@@ -29,25 +30,26 @@ def modify_report_environment_file(report_widgets_dir):
     ]
     # 确保目录存在
     PubMethod.create_dirs(os.path.join(report_widgets_dir, 'widgets'))
-    with open('./Report/allure-results/widgets/environment.json', 'w', encoding='utf-8') as f:
+    with open(report_widgets_dir + '/widgets/environment.json', 'w', encoding='utf-8') as f:
         json.dump(environment_info, f, ensure_ascii=False, indent=4)
 
 
+# 运行命令参数配置
 def run_all_case(browser):
-    report_dir = os.path.abspath("./Report/{}".format(browser))
-    report_widgets_dir = os.path.abspath("./Report/allure-results")
+    result_dir = os.path.abspath("./Report/{}/allure-result".format(browser))
+    report_dir = os.path.abspath("./Report/{}/allure-report".format(browser))
     # 定义测试用例集合
     # 定义features集合
     allure_features = ["--allure-features"]
     allure_features_list = [
-        'Register_page_case',
+        # 'Register_page_case',
         'Login_page_case'
     ]
     allure_features_args = ",".join(allure_features_list)
     # 定义stories集合
     allure_stories = ["--allure-stories"]
     allure_stories_args = ['']
-    allure_path_args = ['--alluredir', report_dir, '--clean-alluredir']
+    allure_path_args = ['--alluredir', result_dir, '--clean-alluredir']
     test_args = ['-s', '-q', '--browser={}'.format(browser), '--browser_opt={}'.format("open")]
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
@@ -55,8 +57,9 @@ def run_all_case(browser):
     # 使用pytest.main
     pytest.main(run_args)
     # 生成allure报告，需要系统执行命令--clean会清楚以前写入environment.json的配置
-    cmd = 'allure generate ./Report/{} -o ./Report/{}/allure-results --clean'.format(browser.replace(" ", "_"),
-                                                                                     browser.replace(" ", "_"))
+    cmd = 'allure generate ./Report/{}/allure-result -o ./Report/{}/allure-report --clean'.format(
+        browser.replace(" ", "_"),
+        browser.replace(" ", "_"))
     logging.info("命令行执行cmd:{}".format(cmd))
     try:
         os.system(cmd)
@@ -64,15 +67,14 @@ def run_all_case(browser):
         logging.error('命令【{}】执行失败！'.format(cmd))
         sys.exit()
     # 定义allure报告环境信息
-    modify_report_environment_file(report_widgets_dir)
+    modify_report_environment_file(report_dir)
     # 打印url，方便直接访问
-    url = '报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-results/index.html'.format(root_dir.split('/')[-1],
-                                                                                      browser.replace(" ", "_"))
-    print("输出项目跟目录{}".format(root_dir.split('/')[-1]))
+    url = '报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-report/index.html'.format(root_dir.split('/')[-1],
+                                                                                     browser.replace(" ", "_"))
     print(url)
 
 
-# 命令行参数调用
+# 命令行参数运行
 def receive_cmd_arg():
     global root_dir
     input_browser = sys.argv

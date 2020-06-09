@@ -1,336 +1,46 @@
-2020-06-08 18:04:01 INFO test_DLZC1
-2020-06-08 18:04:01 INFO TestCases/Login/test_loginPageCase.py::TestLoginPageCase::test_DLZC1
-2020-06-08 18:04:01 INFO test_DLZC7
-2020-06-08 18:04:01 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC7
-2020-06-08 18:04:01 INFO test_DLZC8
-2020-06-08 18:04:01 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC8
-2020-06-08 18:04:01 INFO test_DLZC9
-2020-06-08 18:04:01 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC9
-2020-06-08 18:04:01 INFO test_DLZC10
-2020-06-08 18:04:01 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC10
-2020-06-08 18:04:01 INFO test_DLZC11
-2020-06-08 18:04:01 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC11
-2020-06-08 18:04:01 INFO test_DLZC12
-2020-06-08 18:04:01 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC12
-2020-06-08 18:04:01 DEBUG POST http://127.0.0.1:63897/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:01 DEBUG Starting new HTTP connection (1): 127.0.0.1:63897
-2020-06-08 18:04:04 DEBUG http://127.0.0.1:63897 "POST /session HTTP/1.1" 200 719
-2020-06-08 18:04:04 DEBUG Finished Request
-2020-06-08 18:04:04 INFO 用例编号编码：test_DLZC1
-2020-06-08 18:04:04 DEBUG POST http://127.0.0.1:63897/session/07e467321d6d57f0a7ef4abb02b815fd/window/maximize {}
-2020-06-08 18:04:06 DEBUG http://127.0.0.1:63897 "POST /session/07e467321d6d57f0a7ef4abb02b815fd/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:04:06 DEBUG Finished Request
-2020-06-08 18:04:06 DEBUG POST http://127.0.0.1:63897/session/07e467321d6d57f0a7ef4abb02b815fd/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:04:07 DEBUG http://127.0.0.1:63897 "POST /session/07e467321d6d57f0a7ef4abb02b815fd/url HTTP/1.1" 200 14
-2020-06-08 18:04:07 DEBUG Finished Request
-2020-06-08 18:04:07 INFO 元素名称为：Username，元素定位方式为：NAME，元素对象值为：Username
-2020-06-08 18:04:07 INFO 输出定位器信息：('name', 'Username')
-2020-06-08 18:04:07 INFO 正在定位元素信息：定位方式->name,value值->Username
-2020-06-08 18:04:07 DEBUG POST http://127.0.0.1:63897/session/07e467321d6d57f0a7ef4abb02b815fd/element {"using": "css selector", "value": "[name=\"Username\"]"}
-2020-06-08 18:04:07 DEBUG http://127.0.0.1:63897 "POST /session/07e467321d6d57f0a7ef4abb02b815fd/element HTTP/1.1" 200 88
-2020-06-08 18:04:07 DEBUG Finished Request
-2020-06-08 18:04:07 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="07e467321d6d57f0a7ef4abb02b815fd", element="e646a66f-749e-4d9c-81cf-076dd2a167c8")>
-2020-06-08 18:04:07 DEBUG POST http://127.0.0.1:63897/session/07e467321d6d57f0a7ef4abb02b815fd/execute/sync {"script": "return (function(){return function(){var d=this;function f(a){return\"string\"==typeof a};function h(a,b){this.code=a;this.a=l[a]||m;this.message=b||\"\";a=this.a.replace(/((?:^|\\s+)[a-z])/g,function(a){return a.toUpperCase().replace(/^[\\s\\xa0]+/g,\"\")});b=a.length-5;if(0>b||a.indexOf(\"Error\",b)!=b)a+=\"Error\";this.name=a;a=Error(this.message);a.name=this.name;this.stack=a.stack||\"\"}\n(function(){var a=Error;function b(){}b.prototype=a.prototype;h.b=a.prototype;h.prototype=new b;h.prototype.constructor=h;h.a=function(b,c,g){for(var e=Array(arguments.length-2),k=2;k<arguments.length;k++)e[k-2]=arguments[k];return a.prototype[c].apply(b,e)}})();var m=\"unknown error\",l={15:\"element not selectable\",11:\"element not visible\"};l[31]=m;l[30]=m;l[24]=\"invalid cookie domain\";l[29]=\"invalid element coordinates\";l[12]=\"invalid element state\";l[32]=\"invalid selector\";l[51]=\"invalid selector\";\nl[52]=\"invalid selector\";l[17]=\"javascript error\";l[405]=\"unsupported operation\";l[34]=\"move target out of bounds\";l[27]=\"no such alert\";l[7]=\"no such element\";l[8]=\"no such frame\";l[23]=\"no such window\";l[28]=\"script timeout\";l[33]=\"session not created\";l[10]=\"stale element reference\";l[21]=\"timeout\";l[25]=\"unable to set cookie\";l[26]=\"unexpected alert open\";l[13]=m;l[9]=\"unknown command\";h.prototype.toString=function(){return this.name+\": \"+this.message};var n;a:{var p=d.navigator;if(p){var q=p.userAgent;if(q){n=q;break a}}n=\"\"}function r(a){return-1!=n.indexOf(a)};function t(a,b){for(var e=a.length,c=f(a)?a.split(\"\"):a,g=0;g<e;g++)g in c&&b.call(void 0,c[g],g,a)};function v(){return r(\"iPhone\")&&!r(\"iPod\")&&!r(\"iPad\")};function w(){return(r(\"Chrome\")||r(\"CriOS\"))&&!r(\"Edge\")};var x=r(\"Opera\"),y=r(\"Trident\")||r(\"MSIE\"),z=r(\"Edge\"),A=r(\"Gecko\")&&!(-1!=n.toLowerCase().indexOf(\"webkit\")&&!r(\"Edge\"))&&!(r(\"Trident\")||r(\"MSIE\"))&&!r(\"Edge\"),aa=-1!=n.toLowerCase().indexOf(\"webkit\")&&!r(\"Edge\");function B(){var a=d.document;return a?a.documentMode:void 0}var C;\na:{var D=\"\",E=function(){var a=n;if(A)return/rv\\:([^\\);]+)(\\)|;)/.exec(a);if(z)return/Edge\\/([\\d\\.]+)/.exec(a);if(y)return/\\b(?:MSIE|rv)[: ]([^\\);]+)(\\)|;)/.exec(a);if(aa)return/WebKit\\/(\\S+)/.exec(a);if(x)return/(?:Version)[ \\/]?(\\S+)/.exec(a)}();E&&(D=E?E[1]:\"\");if(y){var F=B();if(null!=F&&F>parseFloat(D)){C=String(F);break a}}C=D}var G;var H=d.document;G=H&&y?B()||(\"CSS1Compat\"==H.compatMode?parseInt(C,10):5):void 0;var ba=r(\"Firefox\"),ca=v()||r(\"iPod\"),da=r(\"iPad\"),I=r(\"Android\")&&!(w()||r(\"Firefox\")||r(\"Opera\")||r(\"Silk\")),ea=w(),J=r(\"Safari\")&&!(w()||r(\"Coast\")||r(\"Opera\")||r(\"Edge\")||r(\"Silk\")||r(\"Android\"))&&!(v()||r(\"iPad\")||r(\"iPod\"));function K(a){return(a=a.exec(n))?a[1]:\"\"}(function(){if(ba)return K(/Firefox\\/([0-9.]+)/);if(y||z||x)return C;if(ea)return v()||r(\"iPad\")||r(\"iPod\")?K(/CriOS\\/([0-9.]+)/):K(/Chrome\\/([0-9.]+)/);if(J&&!(v()||r(\"iPad\")||r(\"iPod\")))return K(/Version\\/([0-9.]+)/);if(ca||da){var a=/Version\\/(\\S+).*Mobile\\/(\\S+)/.exec(n);if(a)return a[1]+\".\"+a[2]}else if(I)return(a=K(/Android\\s+([0-9.]+)/))?a:K(/Version\\/([0-9.]+)/);return\"\"})();var L,M=function(){if(!A)return!1;var a=d.Components;if(!a)return!1;try{if(!a.classes)return!1}catch(g){return!1}var b=a.classes,a=a.interfaces,e=b[\"@mozilla.org/xpcom/version-comparator;1\"].getService(a.nsIVersionComparator),c=b[\"@mozilla.org/xre/app-info;1\"].getService(a.nsIXULAppInfo).version;L=function(a){e.compare(c,\"\"+a)};return!0}(),N=y&&!(8<=Number(G)),fa=y&&!(9<=Number(G));I&&M&&L(2.3);I&&M&&L(4);J&&M&&L(6);var ga={SCRIPT:1,STYLE:1,HEAD:1,IFRAME:1,OBJECT:1},O={IMG:\" \",BR:\"\\n\"};function P(a,b,e){if(!(a.nodeName in ga))if(3==a.nodeType)e?b.push(String(a.nodeValue).replace(/(\\r\\n|\\r|\\n)/g,\"\")):b.push(a.nodeValue);else if(a.nodeName in O)b.push(O[a.nodeName]);else for(a=a.firstChild;a;)P(a,b,e),a=a.nextSibling};function Q(a,b){b=b.toLowerCase();return\"style\"==b?ha(a.style.cssText):N&&\"value\"==b&&R(a,\"INPUT\")?a.value:fa&&!0===a[b]?String(a.getAttribute(b)):(a=a.getAttributeNode(b))&&a.specified?a.value:null}var ia=/[;]+(?=(?:(?:[^\"]*\"){2})*[^\"]*$)(?=(?:(?:[^']*'){2})*[^']*$)(?=(?:[^()]*\\([^()]*\\))*[^()]*$)/;\nfunction ha(a){var b=[];t(a.split(ia),function(a){var c=a.indexOf(\":\");0<c&&(a=[a.slice(0,c),a.slice(c+1)],2==a.length&&b.push(a[0].toLowerCase(),\":\",a[1],\";\"))});b=b.join(\"\");return b=\";\"==b.charAt(b.length-1)?b:b+\";\"}function S(a,b){N&&\"value\"==b&&R(a,\"OPTION\")&&null===Q(a,\"value\")?(b=[],P(a,b,!1),a=b.join(\"\")):a=a[b];return a}function R(a,b){b&&\"string\"!==typeof b&&(b=b.toString());return!!a&&1==a.nodeType&&(!b||a.tagName.toUpperCase()==b)}\nfunction T(a){return R(a,\"OPTION\")?!0:R(a,\"INPUT\")?(a=a.type.toLowerCase(),\"checkbox\"==a||\"radio\"==a):!1};var ja={\"class\":\"className\",readonly:\"readOnly\"},U=\"allowfullscreen allowpaymentrequest allowusermedia async autofocus autoplay checked compact complete controls declare default defaultchecked defaultselected defer disabled ended formnovalidate hidden indeterminate iscontenteditable ismap itemscope loop multiple muted nohref nomodule noresize noshade novalidate nowrap open paused playsinline pubdate readonly required reversed scoped seamless seeking selected truespeed typemustmatch willvalidate\".split(\" \");function V(a,b){var e=null,c=b.toLowerCase();if(\"style\"==c)return(e=a.style)&&!f(e)&&(e=e.cssText),e;if((\"selected\"==c||\"checked\"==c)&&T(a)){if(!T(a))throw new h(15,\"Element is not selectable\");b=\"selected\";e=a.type&&a.type.toLowerCase();if(\"checkbox\"==e||\"radio\"==e)b=\"checked\";return S(a,b)?\"true\":null}var g=R(a,\"A\");if(R(a,\"IMG\")&&\"src\"==c||g&&\"href\"==c)return(e=Q(a,c))&&(e=S(a,c)),e;if(\"spellcheck\"==c){e=Q(a,c);if(null!==e){if(\"false\"==e.toLowerCase())return\"false\";if(\"true\"==e.toLowerCase())return\"true\"}return S(a,\nc)+\"\"}g=ja[b]||b;a:if(f(U))c=f(c)&&1==c.length?U.indexOf(c,0):-1;else{for(var u=0;u<U.length;u++)if(u in U&&U[u]===c){c=u;break a}c=-1}if(0<=c)return(e=null!==Q(a,b)||S(a,g))?\"true\":null;try{var k=S(a,g)}catch(ka){}(c=null==k)||(c=typeof k,c=\"object\"==c&&null!=k||\"function\"==c);c?e=Q(a,b):e=k;return null!=e?e.toString():null}var W=[\"_\"],X=d;W[0]in X||!X.execScript||X.execScript(\"var \"+W[0]);\nfor(var Y;W.length&&(Y=W.shift());){var Z;if(Z=!W.length)Z=void 0!==V;Z?X[Y]=V:X[Y]&&X[Y]!==Object.prototype[Y]?X=X[Y]:X=X[Y]={}};; return this._.apply(null,arguments);}.apply({navigator:typeof window!='undefined'?window.navigator:null,document:typeof window!='undefined'?window.document:null}, arguments);}\n).apply(null, arguments);", "args": [{"ELEMENT": "e646a66f-749e-4d9c-81cf-076dd2a167c8", "element-6066-11e4-a52e-4f735466cecf": "e646a66f-749e-4d9c-81cf-076dd2a167c8"}, "placeholder"]}
-2020-06-08 18:04:07 DEBUG http://127.0.0.1:63897 "POST /session/07e467321d6d57f0a7ef4abb02b815fd/execute/sync HTTP/1.1" 200 31
-2020-06-08 18:04:07 DEBUG Finished Request
-2020-06-08 18:04:07 INFO 该元素对象获取placeholder成功，placeholder值为：邮箱/手机号码
-2020-06-08 18:04:07 INFO 正在进行元素断言：断言方式->邮箱/手机号码：是否等于->手机号码
-2020-06-08 18:04:07 ERROR 断言执行失败，错误信息为：
-2020-06-08 18:04:07 INFO 正在进行截图操作：
-2020-06-08 18:04:07 DEBUG GET http://127.0.0.1:63897/session/07e467321d6d57f0a7ef4abb02b815fd/screenshot {}
-2020-06-08 18:04:08 DEBUG http://127.0.0.1:63897 "GET /session/07e467321d6d57f0a7ef4abb02b815fd/screenshot HTTP/1.1" 200 62084
-2020-06-08 18:04:08 DEBUG Finished Request
-2020-06-08 18:04:08 INFO 截图成功，picture_url为：Report/picture/2020-06-08-18_04_07.png
-2020-06-08 18:04:08 DEBUG DELETE http://127.0.0.1:63897/session/07e467321d6d57f0a7ef4abb02b815fd {}
-2020-06-08 18:04:08 DEBUG http://127.0.0.1:63897 "DELETE /session/07e467321d6d57f0a7ef4abb02b815fd HTTP/1.1" 200 14
-2020-06-08 18:04:08 DEBUG Finished Request
-2020-06-08 18:04:11 DEBUG POST http://127.0.0.1:63928/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:11 DEBUG Starting new HTTP connection (1): 127.0.0.1:63928
-2020-06-08 18:04:13 DEBUG http://127.0.0.1:63928 "POST /session HTTP/1.1" 200 719
-2020-06-08 18:04:13 DEBUG Finished Request
-2020-06-08 18:04:13 DEBUG POST http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf/window/maximize {}
-2020-06-08 18:04:15 DEBUG http://127.0.0.1:63928 "POST /session/44ec27829fb9bb64996e6e4e93e5f5cf/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:04:15 DEBUG Finished Request
-2020-06-08 18:04:15 DEBUG POST http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:04:16 DEBUG http://127.0.0.1:63928 "POST /session/44ec27829fb9bb64996e6e4e93e5f5cf/url HTTP/1.1" 200 14
-2020-06-08 18:04:16 DEBUG Finished Request
-2020-06-08 18:04:16 INFO 元素名称为：InputWarningA，元素定位方式为：CLASS_NAME，元素对象值为：InputWarningA
-2020-06-08 18:04:16 INFO 输出定位器信息：('class name', 'InputWarningA')
-2020-06-08 18:04:16 INFO 正在定位元素信息：定位方式->class name,value值->InputWarningA
-2020-06-08 18:04:16 DEBUG POST http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf/element {"using": "css selector", "value": ".InputWarningA"}
-2020-06-08 18:04:16 DEBUG http://127.0.0.1:63928 "POST /session/44ec27829fb9bb64996e6e4e93e5f5cf/element HTTP/1.1" 200 88
-2020-06-08 18:04:16 DEBUG Finished Request
-2020-06-08 18:04:16 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="44ec27829fb9bb64996e6e4e93e5f5cf", element="99871ff3-1a63-4154-b39b-f525ff023d00")>
-2020-06-08 18:04:16 DEBUG POST http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf/element/99871ff3-1a63-4154-b39b-f525ff023d00/click {"id": "99871ff3-1a63-4154-b39b-f525ff023d00"}
-2020-06-08 18:04:17 DEBUG http://127.0.0.1:63928 "POST /session/44ec27829fb9bb64996e6e4e93e5f5cf/element/99871ff3-1a63-4154-b39b-f525ff023d00/click HTTP/1.1" 200 14
-2020-06-08 18:04:17 DEBUG Finished Request
-2020-06-08 18:04:17 INFO 元素对象点击成功
-2020-06-08 18:04:17 INFO 元素名称为：Username，元素定位方式为：NAME，元素对象值为：Username
-2020-06-08 18:04:17 INFO 输出定位器信息：('name', 'Username')
-2020-06-08 18:04:17 INFO 正在定位元素信息：定位方式->name,value值->Username
-2020-06-08 18:04:17 DEBUG POST http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf/element {"using": "css selector", "value": "[name=\"Username\"]"}
-2020-06-08 18:04:17 DEBUG http://127.0.0.1:63928 "POST /session/44ec27829fb9bb64996e6e4e93e5f5cf/element HTTP/1.1" 200 88
-2020-06-08 18:04:17 DEBUG Finished Request
-2020-06-08 18:04:17 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="44ec27829fb9bb64996e6e4e93e5f5cf", element="93c00640-c0a1-47d0-a133-527101957ccb")>
-2020-06-08 18:04:17 DEBUG POST http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf/execute/sync {"script": "return (function(){return function(){var d=this;function f(a){return\"string\"==typeof a};function h(a,b){this.code=a;this.a=l[a]||m;this.message=b||\"\";a=this.a.replace(/((?:^|\\s+)[a-z])/g,function(a){return a.toUpperCase().replace(/^[\\s\\xa0]+/g,\"\")});b=a.length-5;if(0>b||a.indexOf(\"Error\",b)!=b)a+=\"Error\";this.name=a;a=Error(this.message);a.name=this.name;this.stack=a.stack||\"\"}\n(function(){var a=Error;function b(){}b.prototype=a.prototype;h.b=a.prototype;h.prototype=new b;h.prototype.constructor=h;h.a=function(b,c,g){for(var e=Array(arguments.length-2),k=2;k<arguments.length;k++)e[k-2]=arguments[k];return a.prototype[c].apply(b,e)}})();var m=\"unknown error\",l={15:\"element not selectable\",11:\"element not visible\"};l[31]=m;l[30]=m;l[24]=\"invalid cookie domain\";l[29]=\"invalid element coordinates\";l[12]=\"invalid element state\";l[32]=\"invalid selector\";l[51]=\"invalid selector\";\nl[52]=\"invalid selector\";l[17]=\"javascript error\";l[405]=\"unsupported operation\";l[34]=\"move target out of bounds\";l[27]=\"no such alert\";l[7]=\"no such element\";l[8]=\"no such frame\";l[23]=\"no such window\";l[28]=\"script timeout\";l[33]=\"session not created\";l[10]=\"stale element reference\";l[21]=\"timeout\";l[25]=\"unable to set cookie\";l[26]=\"unexpected alert open\";l[13]=m;l[9]=\"unknown command\";h.prototype.toString=function(){return this.name+\": \"+this.message};var n;a:{var p=d.navigator;if(p){var q=p.userAgent;if(q){n=q;break a}}n=\"\"}function r(a){return-1!=n.indexOf(a)};function t(a,b){for(var e=a.length,c=f(a)?a.split(\"\"):a,g=0;g<e;g++)g in c&&b.call(void 0,c[g],g,a)};function v(){return r(\"iPhone\")&&!r(\"iPod\")&&!r(\"iPad\")};function w(){return(r(\"Chrome\")||r(\"CriOS\"))&&!r(\"Edge\")};var x=r(\"Opera\"),y=r(\"Trident\")||r(\"MSIE\"),z=r(\"Edge\"),A=r(\"Gecko\")&&!(-1!=n.toLowerCase().indexOf(\"webkit\")&&!r(\"Edge\"))&&!(r(\"Trident\")||r(\"MSIE\"))&&!r(\"Edge\"),aa=-1!=n.toLowerCase().indexOf(\"webkit\")&&!r(\"Edge\");function B(){var a=d.document;return a?a.documentMode:void 0}var C;\na:{var D=\"\",E=function(){var a=n;if(A)return/rv\\:([^\\);]+)(\\)|;)/.exec(a);if(z)return/Edge\\/([\\d\\.]+)/.exec(a);if(y)return/\\b(?:MSIE|rv)[: ]([^\\);]+)(\\)|;)/.exec(a);if(aa)return/WebKit\\/(\\S+)/.exec(a);if(x)return/(?:Version)[ \\/]?(\\S+)/.exec(a)}();E&&(D=E?E[1]:\"\");if(y){var F=B();if(null!=F&&F>parseFloat(D)){C=String(F);break a}}C=D}var G;var H=d.document;G=H&&y?B()||(\"CSS1Compat\"==H.compatMode?parseInt(C,10):5):void 0;var ba=r(\"Firefox\"),ca=v()||r(\"iPod\"),da=r(\"iPad\"),I=r(\"Android\")&&!(w()||r(\"Firefox\")||r(\"Opera\")||r(\"Silk\")),ea=w(),J=r(\"Safari\")&&!(w()||r(\"Coast\")||r(\"Opera\")||r(\"Edge\")||r(\"Silk\")||r(\"Android\"))&&!(v()||r(\"iPad\")||r(\"iPod\"));function K(a){return(a=a.exec(n))?a[1]:\"\"}(function(){if(ba)return K(/Firefox\\/([0-9.]+)/);if(y||z||x)return C;if(ea)return v()||r(\"iPad\")||r(\"iPod\")?K(/CriOS\\/([0-9.]+)/):K(/Chrome\\/([0-9.]+)/);if(J&&!(v()||r(\"iPad\")||r(\"iPod\")))return K(/Version\\/([0-9.]+)/);if(ca||da){var a=/Version\\/(\\S+).*Mobile\\/(\\S+)/.exec(n);if(a)return a[1]+\".\"+a[2]}else if(I)return(a=K(/Android\\s+([0-9.]+)/))?a:K(/Version\\/([0-9.]+)/);return\"\"})();var L,M=function(){if(!A)return!1;var a=d.Components;if(!a)return!1;try{if(!a.classes)return!1}catch(g){return!1}var b=a.classes,a=a.interfaces,e=b[\"@mozilla.org/xpcom/version-comparator;1\"].getService(a.nsIVersionComparator),c=b[\"@mozilla.org/xre/app-info;1\"].getService(a.nsIXULAppInfo).version;L=function(a){e.compare(c,\"\"+a)};return!0}(),N=y&&!(8<=Number(G)),fa=y&&!(9<=Number(G));I&&M&&L(2.3);I&&M&&L(4);J&&M&&L(6);var ga={SCRIPT:1,STYLE:1,HEAD:1,IFRAME:1,OBJECT:1},O={IMG:\" \",BR:\"\\n\"};function P(a,b,e){if(!(a.nodeName in ga))if(3==a.nodeType)e?b.push(String(a.nodeValue).replace(/(\\r\\n|\\r|\\n)/g,\"\")):b.push(a.nodeValue);else if(a.nodeName in O)b.push(O[a.nodeName]);else for(a=a.firstChild;a;)P(a,b,e),a=a.nextSibling};function Q(a,b){b=b.toLowerCase();return\"style\"==b?ha(a.style.cssText):N&&\"value\"==b&&R(a,\"INPUT\")?a.value:fa&&!0===a[b]?String(a.getAttribute(b)):(a=a.getAttributeNode(b))&&a.specified?a.value:null}var ia=/[;]+(?=(?:(?:[^\"]*\"){2})*[^\"]*$)(?=(?:(?:[^']*'){2})*[^']*$)(?=(?:[^()]*\\([^()]*\\))*[^()]*$)/;\nfunction ha(a){var b=[];t(a.split(ia),function(a){var c=a.indexOf(\":\");0<c&&(a=[a.slice(0,c),a.slice(c+1)],2==a.length&&b.push(a[0].toLowerCase(),\":\",a[1],\";\"))});b=b.join(\"\");return b=\";\"==b.charAt(b.length-1)?b:b+\";\"}function S(a,b){N&&\"value\"==b&&R(a,\"OPTION\")&&null===Q(a,\"value\")?(b=[],P(a,b,!1),a=b.join(\"\")):a=a[b];return a}function R(a,b){b&&\"string\"!==typeof b&&(b=b.toString());return!!a&&1==a.nodeType&&(!b||a.tagName.toUpperCase()==b)}\nfunction T(a){return R(a,\"OPTION\")?!0:R(a,\"INPUT\")?(a=a.type.toLowerCase(),\"checkbox\"==a||\"radio\"==a):!1};var ja={\"class\":\"className\",readonly:\"readOnly\"},U=\"allowfullscreen allowpaymentrequest allowusermedia async autofocus autoplay checked compact complete controls declare default defaultchecked defaultselected defer disabled ended formnovalidate hidden indeterminate iscontenteditable ismap itemscope loop multiple muted nohref nomodule noresize noshade novalidate nowrap open paused playsinline pubdate readonly required reversed scoped seamless seeking selected truespeed typemustmatch willvalidate\".split(\" \");function V(a,b){var e=null,c=b.toLowerCase();if(\"style\"==c)return(e=a.style)&&!f(e)&&(e=e.cssText),e;if((\"selected\"==c||\"checked\"==c)&&T(a)){if(!T(a))throw new h(15,\"Element is not selectable\");b=\"selected\";e=a.type&&a.type.toLowerCase();if(\"checkbox\"==e||\"radio\"==e)b=\"checked\";return S(a,b)?\"true\":null}var g=R(a,\"A\");if(R(a,\"IMG\")&&\"src\"==c||g&&\"href\"==c)return(e=Q(a,c))&&(e=S(a,c)),e;if(\"spellcheck\"==c){e=Q(a,c);if(null!==e){if(\"false\"==e.toLowerCase())return\"false\";if(\"true\"==e.toLowerCase())return\"true\"}return S(a,\nc)+\"\"}g=ja[b]||b;a:if(f(U))c=f(c)&&1==c.length?U.indexOf(c,0):-1;else{for(var u=0;u<U.length;u++)if(u in U&&U[u]===c){c=u;break a}c=-1}if(0<=c)return(e=null!==Q(a,b)||S(a,g))?\"true\":null;try{var k=S(a,g)}catch(ka){}(c=null==k)||(c=typeof k,c=\"object\"==c&&null!=k||\"function\"==c);c?e=Q(a,b):e=k;return null!=e?e.toString():null}var W=[\"_\"],X=d;W[0]in X||!X.execScript||X.execScript(\"var \"+W[0]);\nfor(var Y;W.length&&(Y=W.shift());){var Z;if(Z=!W.length)Z=void 0!==V;Z?X[Y]=V:X[Y]&&X[Y]!==Object.prototype[Y]?X=X[Y]:X=X[Y]={}};; return this._.apply(null,arguments);}.apply({navigator:typeof window!='undefined'?window.navigator:null,document:typeof window!='undefined'?window.document:null}, arguments);}\n).apply(null, arguments);", "args": [{"ELEMENT": "93c00640-c0a1-47d0-a133-527101957ccb", "element-6066-11e4-a52e-4f735466cecf": "93c00640-c0a1-47d0-a133-527101957ccb"}, "placeholder"]}
-2020-06-08 18:04:17 DEBUG http://127.0.0.1:63928 "POST /session/44ec27829fb9bb64996e6e4e93e5f5cf/execute/sync HTTP/1.1" 200 24
-2020-06-08 18:04:17 DEBUG Finished Request
-2020-06-08 18:04:17 INFO 该元素对象获取placeholder成功，placeholder值为：手机号码
-2020-06-08 18:04:17 INFO 正在进行元素断言：断言方式->手机号码：是否等于->手机号码
-2020-06-08 18:04:17 DEBUG DELETE http://127.0.0.1:63928/session/44ec27829fb9bb64996e6e4e93e5f5cf {}
-2020-06-08 18:04:17 DEBUG http://127.0.0.1:63928 "DELETE /session/44ec27829fb9bb64996e6e4e93e5f5cf HTTP/1.1" 200 14
-2020-06-08 18:04:17 DEBUG Finished Request
-2020-06-08 18:04:19 DEBUG POST http://127.0.0.1:63952/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:19 DEBUG Starting new HTTP connection (1): 127.0.0.1:63952
-2020-06-08 18:04:22 DEBUG http://127.0.0.1:63952 "POST /session HTTP/1.1" 200 720
-2020-06-08 18:04:22 DEBUG Finished Request
-2020-06-08 18:04:22 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/window/maximize {}
-2020-06-08 18:04:24 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:04:24 DEBUG Finished Request
-2020-06-08 18:04:24 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/url HTTP/1.1" 200 14
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 元素名称为：InputWarningA，元素定位方式为：CLASS_NAME，元素对象值为：InputWarningA
-2020-06-08 18:04:25 INFO 输出定位器信息：('class name', 'InputWarningA')
-2020-06-08 18:04:25 INFO 正在定位元素信息：定位方式->class name,value值->InputWarningA
-2020-06-08 18:04:25 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/element {"using": "css selector", "value": ".InputWarningA"}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/element HTTP/1.1" 200 88
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="c930feec105ad4584991155724909964", element="37ecbbcd-26b1-4f2b-a90c-d5e9103bacb3")>
-2020-06-08 18:04:25 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/element/37ecbbcd-26b1-4f2b-a90c-d5e9103bacb3/click {"id": "37ecbbcd-26b1-4f2b-a90c-d5e9103bacb3"}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/element/37ecbbcd-26b1-4f2b-a90c-d5e9103bacb3/click HTTP/1.1" 200 14
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 元素对象点击成功
-2020-06-08 18:04:25 INFO 元素名称为：海外用户注册，元素定位方式为：LINK_TEXT，元素对象值为：海外用户注册
-2020-06-08 18:04:25 INFO 输出定位器信息：('link text', '海外用户注册')
-2020-06-08 18:04:25 INFO 正在定位元素信息：定位方式->link text,value值->海外用户注册
-2020-06-08 18:04:25 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/element {"using": "link text", "value": "\u6d77\u5916\u7528\u6237\u6ce8\u518c"}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/element HTTP/1.1" 200 88
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="c930feec105ad4584991155724909964", element="660d6e75-990a-48d8-8a70-7ce25fbbe963")>
-2020-06-08 18:04:25 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/element/660d6e75-990a-48d8-8a70-7ce25fbbe963/click {"id": "660d6e75-990a-48d8-8a70-7ce25fbbe963"}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/element/660d6e75-990a-48d8-8a70-7ce25fbbe963/click HTTP/1.1" 200 14
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 元素对象点击成功
-2020-06-08 18:04:25 INFO 元素名称为：country-code，元素定位方式为：CLASS_NAME，元素对象值为：country-code
-2020-06-08 18:04:25 INFO 输出定位器信息：('class name', 'country-code')
-2020-06-08 18:04:25 INFO 正在定位元素信息：定位方式->class name,value值->country-code
-2020-06-08 18:04:25 DEBUG POST http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/element {"using": "css selector", "value": ".country-code"}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "POST /session/c930feec105ad4584991155724909964/element HTTP/1.1" 200 88
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="c930feec105ad4584991155724909964", element="24adced2-ca2b-4432-baaf-d341e365105e")>
-2020-06-08 18:04:25 INFO 正在进行元素断言：断言方式->False：是否等于False->True
-2020-06-08 18:04:25 ERROR 断言执行失败，错误信息为：
-2020-06-08 18:04:25 INFO 正在进行截图操作：
-2020-06-08 18:04:25 DEBUG GET http://127.0.0.1:63952/session/c930feec105ad4584991155724909964/screenshot {}
-2020-06-08 18:04:25 DEBUG http://127.0.0.1:63952 "GET /session/c930feec105ad4584991155724909964/screenshot HTTP/1.1" 200 65256
-2020-06-08 18:04:25 DEBUG Finished Request
-2020-06-08 18:04:25 INFO 截图成功，picture_url为：Report/picture/2020-06-08-18_04_25.png
-2020-06-08 18:04:25 DEBUG DELETE http://127.0.0.1:63952/session/c930feec105ad4584991155724909964 {}
-2020-06-08 18:04:26 DEBUG http://127.0.0.1:63952 "DELETE /session/c930feec105ad4584991155724909964 HTTP/1.1" 200 14
-2020-06-08 18:04:26 DEBUG Finished Request
-2020-06-08 18:04:28 DEBUG POST http://127.0.0.1:63975/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:28 DEBUG Starting new HTTP connection (1): 127.0.0.1:63975
-2020-06-08 18:04:31 DEBUG http://127.0.0.1:63975 "POST /session HTTP/1.1" 200 718
-2020-06-08 18:04:31 DEBUG Finished Request
-2020-06-08 18:04:31 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/window/maximize {}
-2020-06-08 18:04:33 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:04:33 DEBUG Finished Request
-2020-06-08 18:04:33 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/url HTTP/1.1" 200 14
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素名称为：InputWarningA，元素定位方式为：CLASS_NAME，元素对象值为：InputWarningA
-2020-06-08 18:04:34 INFO 输出定位器信息：('class name', 'InputWarningA')
-2020-06-08 18:04:34 INFO 正在定位元素信息：定位方式->class name,value值->InputWarningA
-2020-06-08 18:04:34 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/element {"using": "css selector", "value": ".InputWarningA"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/element HTTP/1.1" 200 88
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="45680dca6119a535e9f285f5cc422e74", element="271e1851-df85-4f9e-85b2-b2108c1ac07c")>
-2020-06-08 18:04:34 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/element/271e1851-df85-4f9e-85b2-b2108c1ac07c/click {"id": "271e1851-df85-4f9e-85b2-b2108c1ac07c"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/element/271e1851-df85-4f9e-85b2-b2108c1ac07c/click HTTP/1.1" 200 14
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素对象点击成功
-2020-06-08 18:04:34 INFO 元素名称为：登录，元素定位方式为：LINK_TEXT，元素对象值为：登录
-2020-06-08 18:04:34 INFO 输出定位器信息：('link text', '登录')
-2020-06-08 18:04:34 INFO 正在定位元素信息：定位方式->link text,value值->登录
-2020-06-08 18:04:34 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/element {"using": "link text", "value": "\u767b\u5f55"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/element HTTP/1.1" 200 88
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="45680dca6119a535e9f285f5cc422e74", element="2701af70-3161-44be-a414-6827686d1d56")>
-2020-06-08 18:04:34 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/element/2701af70-3161-44be-a414-6827686d1d56/click {"id": "2701af70-3161-44be-a414-6827686d1d56"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/element/2701af70-3161-44be-a414-6827686d1d56/click HTTP/1.1" 200 14
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素对象点击成功
-2020-06-08 18:04:34 INFO 元素名称为：InputTitleText，元素定位方式为：CLASS_NAME，元素对象值为：InputTitleText
-2020-06-08 18:04:34 INFO 输出定位器信息：('class name', 'InputTitleText')
-2020-06-08 18:04:34 INFO 正在定位元素信息：定位方式->class name,value值->InputTitleText
-2020-06-08 18:04:34 DEBUG POST http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/element {"using": "css selector", "value": ".InputTitleText"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "POST /session/45680dca6119a535e9f285f5cc422e74/element HTTP/1.1" 200 88
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="45680dca6119a535e9f285f5cc422e74", element="1d1d9d1f-10ac-40b6-a60d-d82600593e93")>
-2020-06-08 18:04:34 DEBUG GET http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74/element/1d1d9d1f-10ac-40b6-a60d-d82600593e93/text {"id": "1d1d9d1f-10ac-40b6-a60d-d82600593e93"}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "GET /session/45680dca6119a535e9f285f5cc422e74/element/1d1d9d1f-10ac-40b6-a60d-d82600593e93/text HTTP/1.1" 200 18
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:34 INFO 元素text值：登录
-2020-06-08 18:04:34 INFO 正在进行元素断言：断言方式->登录：是否等于->登录
-2020-06-08 18:04:34 DEBUG DELETE http://127.0.0.1:63975/session/45680dca6119a535e9f285f5cc422e74 {}
-2020-06-08 18:04:34 DEBUG http://127.0.0.1:63975 "DELETE /session/45680dca6119a535e9f285f5cc422e74 HTTP/1.1" 200 14
-2020-06-08 18:04:34 DEBUG Finished Request
-2020-06-08 18:04:37 DEBUG POST http://127.0.0.1:63998/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:37 DEBUG Starting new HTTP connection (1): 127.0.0.1:63998
-2020-06-08 18:04:40 DEBUG http://127.0.0.1:63998 "POST /session HTTP/1.1" 200 719
-2020-06-08 18:04:40 DEBUG Finished Request
-2020-06-08 18:04:40 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/window/maximize {}
-2020-06-08 18:04:42 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:04:42 DEBUG Finished Request
-2020-06-08 18:04:42 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/url HTTP/1.1" 200 14
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素名称为：InputWarningA，元素定位方式为：CLASS_NAME，元素对象值为：InputWarningA
-2020-06-08 18:04:43 INFO 输出定位器信息：('class name', 'InputWarningA')
-2020-06-08 18:04:43 INFO 正在定位元素信息：定位方式->class name,value值->InputWarningA
-2020-06-08 18:04:43 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/element {"using": "css selector", "value": ".InputWarningA"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/element HTTP/1.1" 200 88
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="af41c24fea75f6fe8d3fe99a0dcb74fd", element="2dfc7364-24d8-460f-ac66-f63ab512cf98")>
-2020-06-08 18:04:43 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/element/2dfc7364-24d8-460f-ac66-f63ab512cf98/click {"id": "2dfc7364-24d8-460f-ac66-f63ab512cf98"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/element/2dfc7364-24d8-460f-ac66-f63ab512cf98/click HTTP/1.1" 200 14
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素对象点击成功
-2020-06-08 18:04:43 INFO 元素名称为：RegisterBtn，元素定位方式为：CLASS_NAME，元素对象值为：RegisterBtn
-2020-06-08 18:04:43 INFO 输出定位器信息：('class name', 'RegisterBtn')
-2020-06-08 18:04:43 INFO 正在定位元素信息：定位方式->class name,value值->RegisterBtn
-2020-06-08 18:04:43 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/element {"using": "css selector", "value": ".RegisterBtn"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/element HTTP/1.1" 200 88
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="af41c24fea75f6fe8d3fe99a0dcb74fd", element="fd99c770-2578-415f-9c7d-9312b402971f")>
-2020-06-08 18:04:43 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/element/fd99c770-2578-415f-9c7d-9312b402971f/click {"id": "fd99c770-2578-415f-9c7d-9312b402971f"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/element/fd99c770-2578-415f-9c7d-9312b402971f/click HTTP/1.1" 200 14
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素对象点击成功
-2020-06-08 18:04:43 INFO 元素名称为：error_return，元素定位方式为：XPATH，元素对象值为：/html/body/div[2]/form/div[1]/span
-2020-06-08 18:04:43 INFO 输出定位器信息：('xpath', '/html/body/div[2]/form/div[1]/span')
-2020-06-08 18:04:43 INFO 正在定位元素信息：定位方式->xpath,value值->/html/body/div[2]/form/div[1]/span
-2020-06-08 18:04:43 DEBUG POST http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/element {"using": "xpath", "value": "/html/body/div[2]/form/div[1]/span"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "POST /session/af41c24fea75f6fe8d3fe99a0dcb74fd/element HTTP/1.1" 200 88
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="af41c24fea75f6fe8d3fe99a0dcb74fd", element="3a5dc565-4d9e-43d6-8d55-1c89f4d5134c")>
-2020-06-08 18:04:43 DEBUG GET http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/element/3a5dc565-4d9e-43d6-8d55-1c89f4d5134c/text {"id": "3a5dc565-4d9e-43d6-8d55-1c89f4d5134c"}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "GET /session/af41c24fea75f6fe8d3fe99a0dcb74fd/element/3a5dc565-4d9e-43d6-8d55-1c89f4d5134c/text HTTP/1.1" 200 33
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 元素text值：手机号不能为空
-2020-06-08 18:04:43 INFO 正在进行元素断言：断言方式->手机号不能为空：是否等于->登录
-2020-06-08 18:04:43 ERROR 断言执行失败，错误信息为：
-2020-06-08 18:04:43 INFO 正在进行截图操作：
-2020-06-08 18:04:43 DEBUG GET http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd/screenshot {}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "GET /session/af41c24fea75f6fe8d3fe99a0dcb74fd/screenshot HTTP/1.1" 200 63904
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:43 INFO 截图成功，picture_url为：Report/picture/2020-06-08-18_04_43.png
-2020-06-08 18:04:43 DEBUG DELETE http://127.0.0.1:63998/session/af41c24fea75f6fe8d3fe99a0dcb74fd {}
-2020-06-08 18:04:43 DEBUG http://127.0.0.1:63998 "DELETE /session/af41c24fea75f6fe8d3fe99a0dcb74fd HTTP/1.1" 200 14
-2020-06-08 18:04:43 DEBUG Finished Request
-2020-06-08 18:04:46 DEBUG POST http://127.0.0.1:64022/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:46 DEBUG Starting new HTTP connection (1): 127.0.0.1:64022
-2020-06-08 18:04:49 DEBUG http://127.0.0.1:64022 "POST /session HTTP/1.1" 200 720
-2020-06-08 18:04:49 DEBUG Finished Request
-2020-06-08 18:04:49 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/window/maximize {}
-2020-06-08 18:04:51 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:04:51 DEBUG Finished Request
-2020-06-08 18:04:51 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/url HTTP/1.1" 200 14
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素名称为：InputWarningA，元素定位方式为：CLASS_NAME，元素对象值为：InputWarningA
-2020-06-08 18:04:52 INFO 输出定位器信息：('class name', 'InputWarningA')
-2020-06-08 18:04:52 INFO 正在定位元素信息：定位方式->class name,value值->InputWarningA
-2020-06-08 18:04:52 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/element {"using": "css selector", "value": ".InputWarningA"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/element HTTP/1.1" 200 88
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="5cf010ed437a4ca58b50e9a749a0fb8e", element="a64057ff-c483-48bc-8faf-da9e7ff34c83")>
-2020-06-08 18:04:52 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/element/a64057ff-c483-48bc-8faf-da9e7ff34c83/click {"id": "a64057ff-c483-48bc-8faf-da9e7ff34c83"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/element/a64057ff-c483-48bc-8faf-da9e7ff34c83/click HTTP/1.1" 200 14
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素对象点击成功
-2020-06-08 18:04:52 INFO 元素名称为：发送验证码，元素定位方式为：LINK_TEXT，元素对象值为：发送验证码
-2020-06-08 18:04:52 INFO 输出定位器信息：('link text', '发送验证码')
-2020-06-08 18:04:52 INFO 正在定位元素信息：定位方式->link text,value值->发送验证码
-2020-06-08 18:04:52 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/element {"using": "link text", "value": "\u53d1\u9001\u9a8c\u8bc1\u7801"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/element HTTP/1.1" 200 88
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="5cf010ed437a4ca58b50e9a749a0fb8e", element="ad2be81a-48c9-42b8-9b82-85a163a2f020")>
-2020-06-08 18:04:52 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/element/ad2be81a-48c9-42b8-9b82-85a163a2f020/click {"id": "ad2be81a-48c9-42b8-9b82-85a163a2f020"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/element/ad2be81a-48c9-42b8-9b82-85a163a2f020/click HTTP/1.1" 200 14
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素对象点击成功
-2020-06-08 18:04:52 INFO 元素名称为：error_return，元素定位方式为：XPATH，元素对象值为：/html/body/div[2]/form/div[1]/span
-2020-06-08 18:04:52 INFO 输出定位器信息：('xpath', '/html/body/div[2]/form/div[1]/span')
-2020-06-08 18:04:52 INFO 正在定位元素信息：定位方式->xpath,value值->/html/body/div[2]/form/div[1]/span
-2020-06-08 18:04:52 DEBUG POST http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/element {"using": "xpath", "value": "/html/body/div[2]/form/div[1]/span"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "POST /session/5cf010ed437a4ca58b50e9a749a0fb8e/element HTTP/1.1" 200 88
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="5cf010ed437a4ca58b50e9a749a0fb8e", element="c0310bb1-88fc-473d-a751-c42fc4a3ac62")>
-2020-06-08 18:04:52 DEBUG GET http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e/element/c0310bb1-88fc-473d-a751-c42fc4a3ac62/text {"id": "c0310bb1-88fc-473d-a751-c42fc4a3ac62"}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "GET /session/5cf010ed437a4ca58b50e9a749a0fb8e/element/c0310bb1-88fc-473d-a751-c42fc4a3ac62/text HTTP/1.1" 200 33
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:52 INFO 元素text值：用户名不能为空
-2020-06-08 18:04:52 INFO 正在进行元素断言：断言方式->用户名不能为空：是否等于->用户名不能为空
-2020-06-08 18:04:52 DEBUG DELETE http://127.0.0.1:64022/session/5cf010ed437a4ca58b50e9a749a0fb8e {}
-2020-06-08 18:04:52 DEBUG http://127.0.0.1:64022 "DELETE /session/5cf010ed437a4ca58b50e9a749a0fb8e HTTP/1.1" 200 14
-2020-06-08 18:04:52 DEBUG Finished Request
-2020-06-08 18:04:55 DEBUG POST http://127.0.0.1:64046/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
-2020-06-08 18:04:55 DEBUG Starting new HTTP connection (1): 127.0.0.1:64046
-2020-06-08 18:04:58 DEBUG http://127.0.0.1:64046 "POST /session HTTP/1.1" 200 719
-2020-06-08 18:04:58 DEBUG Finished Request
-2020-06-08 18:04:58 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/window/maximize {}
-2020-06-08 18:05:00 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/window/maximize HTTP/1.1" 200 51
-2020-06-08 18:05:00 DEBUG Finished Request
-2020-06-08 18:05:00 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
-2020-06-08 18:05:00 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/url HTTP/1.1" 200 14
-2020-06-08 18:05:00 DEBUG Finished Request
-2020-06-08 18:05:00 INFO 元素名称为：InputWarningA，元素定位方式为：CLASS_NAME，元素对象值为：InputWarningA
-2020-06-08 18:05:00 INFO 输出定位器信息：('class name', 'InputWarningA')
-2020-06-08 18:05:00 INFO 正在定位元素信息：定位方式->class name,value值->InputWarningA
-2020-06-08 18:05:00 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element {"using": "css selector", "value": ".InputWarningA"}
-2020-06-08 18:05:00 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element HTTP/1.1" 200 88
-2020-06-08 18:05:00 DEBUG Finished Request
-2020-06-08 18:05:00 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="7edf3651697635fd77224c5703af92c9", element="c0bcd91b-c19b-4d20-89f0-4670d0c396fe")>
-2020-06-08 18:05:00 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element/c0bcd91b-c19b-4d20-89f0-4670d0c396fe/click {"id": "c0bcd91b-c19b-4d20-89f0-4670d0c396fe"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element/c0bcd91b-c19b-4d20-89f0-4670d0c396fe/click HTTP/1.1" 200 14
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素对象点击成功
-2020-06-08 18:05:01 INFO 元素名称为：Username，元素定位方式为：NAME，元素对象值为：Username
-2020-06-08 18:05:01 INFO 输出定位器信息：('name', 'Username')
-2020-06-08 18:05:01 INFO 正在定位元素信息：定位方式->name,value值->Username
-2020-06-08 18:05:01 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element {"using": "css selector", "value": "[name=\"Username\"]"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element HTTP/1.1" 200 88
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="7edf3651697635fd77224c5703af92c9", element="49870013-f170-4249-bd24-5d61a75d3b9d")>
-2020-06-08 18:05:01 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element/49870013-f170-4249-bd24-5d61a75d3b9d/value {"text": "1", "value": ["1"], "id": "49870013-f170-4249-bd24-5d61a75d3b9d"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element/49870013-f170-4249-bd24-5d61a75d3b9d/value HTTP/1.1" 200 14
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素对象输入值成功，值为：1
-2020-06-08 18:05:01 INFO 元素名称为：RegisterBtn，元素定位方式为：CLASS_NAME，元素对象值为：RegisterBtn
-2020-06-08 18:05:01 INFO 输出定位器信息：('class name', 'RegisterBtn')
-2020-06-08 18:05:01 INFO 正在定位元素信息：定位方式->class name,value值->RegisterBtn
-2020-06-08 18:05:01 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element {"using": "css selector", "value": ".RegisterBtn"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element HTTP/1.1" 200 88
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="7edf3651697635fd77224c5703af92c9", element="2a115526-8139-46c0-8707-a3a52d60fa6a")>
-2020-06-08 18:05:01 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element/2a115526-8139-46c0-8707-a3a52d60fa6a/click {"id": "2a115526-8139-46c0-8707-a3a52d60fa6a"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element/2a115526-8139-46c0-8707-a3a52d60fa6a/click HTTP/1.1" 200 14
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素对象点击成功
-2020-06-08 18:05:01 INFO 元素名称为：error_return，元素定位方式为：XPATH，元素对象值为：/html/body/div[2]/form/div[1]/span
-2020-06-08 18:05:01 INFO 输出定位器信息：('xpath', '/html/body/div[2]/form/div[1]/span')
-2020-06-08 18:05:01 INFO 正在定位元素信息：定位方式->xpath,value值->/html/body/div[2]/form/div[1]/span
-2020-06-08 18:05:01 DEBUG POST http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element {"using": "xpath", "value": "/html/body/div[2]/form/div[1]/span"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "POST /session/7edf3651697635fd77224c5703af92c9/element HTTP/1.1" 200 88
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="7edf3651697635fd77224c5703af92c9", element="29a1ac58-8d97-4a6e-ad9e-cd976baf11ac")>
-2020-06-08 18:05:01 DEBUG GET http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9/element/29a1ac58-8d97-4a6e-ad9e-cd976baf11ac/text {"id": "29a1ac58-8d97-4a6e-ad9e-cd976baf11ac"}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "GET /session/7edf3651697635fd77224c5703af92c9/element/29a1ac58-8d97-4a6e-ad9e-cd976baf11ac/text HTTP/1.1" 200 39
-2020-06-08 18:05:01 DEBUG Finished Request
-2020-06-08 18:05:01 INFO 元素text值：手机号码格式不正确
-2020-06-08 18:05:01 INFO 正在进行元素断言：断言方式->手机号码格式不正确：是否等于->手机号码格式不正确
-2020-06-08 18:05:01 DEBUG DELETE http://127.0.0.1:64046/session/7edf3651697635fd77224c5703af92c9 {}
-2020-06-08 18:05:01 DEBUG http://127.0.0.1:64046 "DELETE /session/7edf3651697635fd77224c5703af92c9 HTTP/1.1" 200 14
-2020-06-08 18:05:01 DEBUG Finished Request
+2020-06-09 18:01:44 INFO test_DLZC1
+2020-06-09 18:01:44 INFO TestCases/Login/test_loginPageCase.py::TestLoginPageCase::test_DLZC1
+2020-06-09 18:01:44 INFO test_DLZC7
+2020-06-09 18:01:44 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC7
+2020-06-09 18:01:44 INFO test_DLZC8
+2020-06-09 18:01:44 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC8
+2020-06-09 18:01:44 INFO test_DLZC9
+2020-06-09 18:01:44 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC9
+2020-06-09 18:01:44 INFO test_DLZC10
+2020-06-09 18:01:44 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC10
+2020-06-09 18:01:44 INFO test_DLZC11
+2020-06-09 18:01:44 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC11
+2020-06-09 18:01:44 INFO test_DLZC12
+2020-06-09 18:01:44 INFO TestCases/Register/test_registerPageCase.py::Test_RegisterPageCase::test_DLZC12
+2020-06-09 18:01:45 DEBUG POST http://127.0.0.1:50969/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-06-09 18:01:45 DEBUG Starting new HTTP connection (1): 127.0.0.1:50969
+2020-06-09 18:01:47 DEBUG http://127.0.0.1:50969 "POST /session HTTP/1.1" 200 720
+2020-06-09 18:01:47 DEBUG Finished Request
+2020-06-09 18:01:48 INFO 用例编号编码：test_DLZC1
+2020-06-09 18:01:48 DEBUG POST http://127.0.0.1:50969/session/50c5be8a0bdcdc9ac2be9952e6e974dc/window/maximize {}
+2020-06-09 18:01:50 DEBUG http://127.0.0.1:50969 "POST /session/50c5be8a0bdcdc9ac2be9952e6e974dc/window/maximize HTTP/1.1" 200 51
+2020-06-09 18:01:50 DEBUG Finished Request
+2020-06-09 18:01:50 DEBUG POST http://127.0.0.1:50969/session/50c5be8a0bdcdc9ac2be9952e6e974dc/url {"url": "https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage"}
+2020-06-09 18:01:50 DEBUG http://127.0.0.1:50969 "POST /session/50c5be8a0bdcdc9ac2be9952e6e974dc/url HTTP/1.1" 200 14
+2020-06-09 18:01:50 DEBUG Finished Request
+2020-06-09 18:01:50 INFO 元素名称为：Username，元素定位方式为：NAME，元素对象值为：Username
+2020-06-09 18:01:50 INFO 输出定位器信息：('name', 'Username')
+2020-06-09 18:01:50 INFO 正在定位元素信息：定位方式->name,value值->Username
+2020-06-09 18:01:50 DEBUG POST http://127.0.0.1:50969/session/50c5be8a0bdcdc9ac2be9952e6e974dc/element {"using": "css selector", "value": "[name=\"Username\"]"}
+2020-06-09 18:01:50 DEBUG http://127.0.0.1:50969 "POST /session/50c5be8a0bdcdc9ac2be9952e6e974dc/element HTTP/1.1" 200 88
+2020-06-09 18:01:50 DEBUG Finished Request
+2020-06-09 18:01:50 INFO 元素对象为：<selenium.webdriver.remote.webelement.WebElement (session="50c5be8a0bdcdc9ac2be9952e6e974dc", element="7dc4c25d-0396-4037-b904-cac64208ae5f")>
+2020-06-09 18:01:50 DEBUG POST http://127.0.0.1:50969/session/50c5be8a0bdcdc9ac2be9952e6e974dc/execute/sync {"script": "return (function(){return function(){var d=this;function f(a){return\"string\"==typeof a};function h(a,b){this.code=a;this.a=l[a]||m;this.message=b||\"\";a=this.a.replace(/((?:^|\\s+)[a-z])/g,function(a){return a.toUpperCase().replace(/^[\\s\\xa0]+/g,\"\")});b=a.length-5;if(0>b||a.indexOf(\"Error\",b)!=b)a+=\"Error\";this.name=a;a=Error(this.message);a.name=this.name;this.stack=a.stack||\"\"}\n(function(){var a=Error;function b(){}b.prototype=a.prototype;h.b=a.prototype;h.prototype=new b;h.prototype.constructor=h;h.a=function(b,c,g){for(var e=Array(arguments.length-2),k=2;k<arguments.length;k++)e[k-2]=arguments[k];return a.prototype[c].apply(b,e)}})();var m=\"unknown error\",l={15:\"element not selectable\",11:\"element not visible\"};l[31]=m;l[30]=m;l[24]=\"invalid cookie domain\";l[29]=\"invalid element coordinates\";l[12]=\"invalid element state\";l[32]=\"invalid selector\";l[51]=\"invalid selector\";\nl[52]=\"invalid selector\";l[17]=\"javascript error\";l[405]=\"unsupported operation\";l[34]=\"move target out of bounds\";l[27]=\"no such alert\";l[7]=\"no such element\";l[8]=\"no such frame\";l[23]=\"no such window\";l[28]=\"script timeout\";l[33]=\"session not created\";l[10]=\"stale element reference\";l[21]=\"timeout\";l[25]=\"unable to set cookie\";l[26]=\"unexpected alert open\";l[13]=m;l[9]=\"unknown command\";h.prototype.toString=function(){return this.name+\": \"+this.message};var n;a:{var p=d.navigator;if(p){var q=p.userAgent;if(q){n=q;break a}}n=\"\"}function r(a){return-1!=n.indexOf(a)};function t(a,b){for(var e=a.length,c=f(a)?a.split(\"\"):a,g=0;g<e;g++)g in c&&b.call(void 0,c[g],g,a)};function v(){return r(\"iPhone\")&&!r(\"iPod\")&&!r(\"iPad\")};function w(){return(r(\"Chrome\")||r(\"CriOS\"))&&!r(\"Edge\")};var x=r(\"Opera\"),y=r(\"Trident\")||r(\"MSIE\"),z=r(\"Edge\"),A=r(\"Gecko\")&&!(-1!=n.toLowerCase().indexOf(\"webkit\")&&!r(\"Edge\"))&&!(r(\"Trident\")||r(\"MSIE\"))&&!r(\"Edge\"),aa=-1!=n.toLowerCase().indexOf(\"webkit\")&&!r(\"Edge\");function B(){var a=d.document;return a?a.documentMode:void 0}var C;\na:{var D=\"\",E=function(){var a=n;if(A)return/rv\\:([^\\);]+)(\\)|;)/.exec(a);if(z)return/Edge\\/([\\d\\.]+)/.exec(a);if(y)return/\\b(?:MSIE|rv)[: ]([^\\);]+)(\\)|;)/.exec(a);if(aa)return/WebKit\\/(\\S+)/.exec(a);if(x)return/(?:Version)[ \\/]?(\\S+)/.exec(a)}();E&&(D=E?E[1]:\"\");if(y){var F=B();if(null!=F&&F>parseFloat(D)){C=String(F);break a}}C=D}var G;var H=d.document;G=H&&y?B()||(\"CSS1Compat\"==H.compatMode?parseInt(C,10):5):void 0;var ba=r(\"Firefox\"),ca=v()||r(\"iPod\"),da=r(\"iPad\"),I=r(\"Android\")&&!(w()||r(\"Firefox\")||r(\"Opera\")||r(\"Silk\")),ea=w(),J=r(\"Safari\")&&!(w()||r(\"Coast\")||r(\"Opera\")||r(\"Edge\")||r(\"Silk\")||r(\"Android\"))&&!(v()||r(\"iPad\")||r(\"iPod\"));function K(a){return(a=a.exec(n))?a[1]:\"\"}(function(){if(ba)return K(/Firefox\\/([0-9.]+)/);if(y||z||x)return C;if(ea)return v()||r(\"iPad\")||r(\"iPod\")?K(/CriOS\\/([0-9.]+)/):K(/Chrome\\/([0-9.]+)/);if(J&&!(v()||r(\"iPad\")||r(\"iPod\")))return K(/Version\\/([0-9.]+)/);if(ca||da){var a=/Version\\/(\\S+).*Mobile\\/(\\S+)/.exec(n);if(a)return a[1]+\".\"+a[2]}else if(I)return(a=K(/Android\\s+([0-9.]+)/))?a:K(/Version\\/([0-9.]+)/);return\"\"})();var L,M=function(){if(!A)return!1;var a=d.Components;if(!a)return!1;try{if(!a.classes)return!1}catch(g){return!1}var b=a.classes,a=a.interfaces,e=b[\"@mozilla.org/xpcom/version-comparator;1\"].getService(a.nsIVersionComparator),c=b[\"@mozilla.org/xre/app-info;1\"].getService(a.nsIXULAppInfo).version;L=function(a){e.compare(c,\"\"+a)};return!0}(),N=y&&!(8<=Number(G)),fa=y&&!(9<=Number(G));I&&M&&L(2.3);I&&M&&L(4);J&&M&&L(6);var ga={SCRIPT:1,STYLE:1,HEAD:1,IFRAME:1,OBJECT:1},O={IMG:\" \",BR:\"\\n\"};function P(a,b,e){if(!(a.nodeName in ga))if(3==a.nodeType)e?b.push(String(a.nodeValue).replace(/(\\r\\n|\\r|\\n)/g,\"\")):b.push(a.nodeValue);else if(a.nodeName in O)b.push(O[a.nodeName]);else for(a=a.firstChild;a;)P(a,b,e),a=a.nextSibling};function Q(a,b){b=b.toLowerCase();return\"style\"==b?ha(a.style.cssText):N&&\"value\"==b&&R(a,\"INPUT\")?a.value:fa&&!0===a[b]?String(a.getAttribute(b)):(a=a.getAttributeNode(b))&&a.specified?a.value:null}var ia=/[;]+(?=(?:(?:[^\"]*\"){2})*[^\"]*$)(?=(?:(?:[^']*'){2})*[^']*$)(?=(?:[^()]*\\([^()]*\\))*[^()]*$)/;\nfunction ha(a){var b=[];t(a.split(ia),function(a){var c=a.indexOf(\":\");0<c&&(a=[a.slice(0,c),a.slice(c+1)],2==a.length&&b.push(a[0].toLowerCase(),\":\",a[1],\";\"))});b=b.join(\"\");return b=\";\"==b.charAt(b.length-1)?b:b+\";\"}function S(a,b){N&&\"value\"==b&&R(a,\"OPTION\")&&null===Q(a,\"value\")?(b=[],P(a,b,!1),a=b.join(\"\")):a=a[b];return a}function R(a,b){b&&\"string\"!==typeof b&&(b=b.toString());return!!a&&1==a.nodeType&&(!b||a.tagName.toUpperCase()==b)}\nfunction T(a){return R(a,\"OPTION\")?!0:R(a,\"INPUT\")?(a=a.type.toLowerCase(),\"checkbox\"==a||\"radio\"==a):!1};var ja={\"class\":\"className\",readonly:\"readOnly\"},U=\"allowfullscreen allowpaymentrequest allowusermedia async autofocus autoplay checked compact complete controls declare default defaultchecked defaultselected defer disabled ended formnovalidate hidden indeterminate iscontenteditable ismap itemscope loop multiple muted nohref nomodule noresize noshade novalidate nowrap open paused playsinline pubdate readonly required reversed scoped seamless seeking selected truespeed typemustmatch willvalidate\".split(\" \");function V(a,b){var e=null,c=b.toLowerCase();if(\"style\"==c)return(e=a.style)&&!f(e)&&(e=e.cssText),e;if((\"selected\"==c||\"checked\"==c)&&T(a)){if(!T(a))throw new h(15,\"Element is not selectable\");b=\"selected\";e=a.type&&a.type.toLowerCase();if(\"checkbox\"==e||\"radio\"==e)b=\"checked\";return S(a,b)?\"true\":null}var g=R(a,\"A\");if(R(a,\"IMG\")&&\"src\"==c||g&&\"href\"==c)return(e=Q(a,c))&&(e=S(a,c)),e;if(\"spellcheck\"==c){e=Q(a,c);if(null!==e){if(\"false\"==e.toLowerCase())return\"false\";if(\"true\"==e.toLowerCase())return\"true\"}return S(a,\nc)+\"\"}g=ja[b]||b;a:if(f(U))c=f(c)&&1==c.length?U.indexOf(c,0):-1;else{for(var u=0;u<U.length;u++)if(u in U&&U[u]===c){c=u;break a}c=-1}if(0<=c)return(e=null!==Q(a,b)||S(a,g))?\"true\":null;try{var k=S(a,g)}catch(ka){}(c=null==k)||(c=typeof k,c=\"object\"==c&&null!=k||\"function\"==c);c?e=Q(a,b):e=k;return null!=e?e.toString():null}var W=[\"_\"],X=d;W[0]in X||!X.execScript||X.execScript(\"var \"+W[0]);\nfor(var Y;W.length&&(Y=W.shift());){var Z;if(Z=!W.length)Z=void 0!==V;Z?X[Y]=V:X[Y]&&X[Y]!==Object.prototype[Y]?X=X[Y]:X=X[Y]={}};; return this._.apply(null,arguments);}.apply({navigator:typeof window!='undefined'?window.navigator:null,document:typeof window!='undefined'?window.document:null}, arguments);}\n).apply(null, arguments);", "args": [{"ELEMENT": "7dc4c25d-0396-4037-b904-cac64208ae5f", "element-6066-11e4-a52e-4f735466cecf": "7dc4c25d-0396-4037-b904-cac64208ae5f"}, "placeholder"]}
+2020-06-09 18:01:50 DEBUG http://127.0.0.1:50969 "POST /session/50c5be8a0bdcdc9ac2be9952e6e974dc/execute/sync HTTP/1.1" 200 31
+2020-06-09 18:01:50 DEBUG Finished Request
+2020-06-09 18:01:50 INFO 该元素对象获取placeholder成功，placeholder值为：邮箱/手机号码
+2020-06-09 18:01:50 INFO 正在进行元素断言：断言方式->邮箱/手机号码：是否等于->手机号码
+2020-06-09 18:01:50 ERROR 断言执行失败，错误信息为：
+2020-06-09 18:01:50 INFO 正在进行截图操作：
+2020-06-09 18:01:50 DEBUG GET http://127.0.0.1:50969/session/50c5be8a0bdcdc9ac2be9952e6e974dc/screenshot {}
+2020-06-09 18:01:51 DEBUG http://127.0.0.1:50969 "GET /session/50c5be8a0bdcdc9ac2be9952e6e974dc/screenshot HTTP/1.1" 200 62084
+2020-06-09 18:01:51 DEBUG Finished Request
+2020-06-09 18:01:51 INFO 截图成功，picture_url为：Report/picture/2020-06-09-18_01_50.png
+2020-06-09 18:01:51 DEBUG DELETE http://127.0.0.1:50969/session/50c5be8a0bdcdc9ac2be9952e6e974dc {}
+2020-06-09 18:01:51 DEBUG http://127.0.0.1:50969 "DELETE /session/50c5be8a0bdcdc9ac2be9952e6e974dc HTTP/1.1" 200 14
+2020-06-09 18:01:51 DEBUG Finished Request
