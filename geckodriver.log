@@ -1,0 +1,36 @@
+1591780474736	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\LUOZHO~1\\AppData\\Local\\Temp\\rust_mozprofileVyZDIj"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1591780478295	Marionette	INFO	Listening on port 65489
+1591780478373	Marionette	WARN	TLS certificate errors will be ignored for this session
+1591780480900	Marionette	INFO	Stopped listening on port 65489
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1591780989381	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\LUOZHO~1\\AppData\\Local\\Temp\\rust_mozprofile3v3NKm"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1591780992163	Marionette	INFO	Listening on port 49959
+1591780992536	Marionette	WARN	TLS certificate errors will be ignored for this session
+1591780996224	Marionette	INFO	Stopped listening on port 49959
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1591781941442	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\LUOZHO~1\\AppData\\Local\\Temp\\rust_mozprofileqlUU1z"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1591781946046	Marionette	INFO	Listening on port 51335
+1591781946161	Marionette	WARN	TLS certificate errors will be ignored for this session
+1591781949494	Marionette	INFO	Stopped listening on port 51335
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

@@ -90,7 +90,7 @@ def import_history_data(history_save_dir, result_dir):
 
 
 # 运行命令参数配置
-def run_all_case(browser):
+def run_all_case(browser, browser_opt, type_driver):
     # 测试结果文件存放目录
     result_dir = os.path.abspath("./Report/{}/allure-result".format(browser))
     # 测试报告文件存放目录
@@ -109,7 +109,7 @@ def run_all_case(browser):
     allure_stories = ["--allure-stories"]
     allure_stories_args = ['']
     allure_path_args = ['--alluredir', result_dir, '--clean-alluredir']
-    test_args = ['-s', '-q', '--browser={}'.format(browser), '--browser_opt={}'.format("open")]
+    test_args = ['-s', '-q', '--browser={}'.format(browser), '--browser_opt={}'.format(browser_opt), '--type_driver={}'.format(type_driver)]
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
         allure_features_args] + allure_stories + allure_stories_args
@@ -130,10 +130,9 @@ def run_all_case(browser):
     # 定义allure报告环境信息
     modify_report_environment_file(report_dir)
     # 保存历史数据
-    time.sleep(5)
     save_history(history_dir, report_dir)
     # 打印url，方便直接访问
-    url = '报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-report/index.html'.format(root_dir.split('/')[-1],
+    url = '本地报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-report/index.html'.format(root_dir.split('/')[-1],
                                                                                      browser.replace(" ", "_"))
     print(url)
 
@@ -147,20 +146,20 @@ def receive_cmd_arg():
             if input_browser[1] == "chrome":
                 root_dir.replace("\\", "/")
                 root_dir = root_dir.replace("\\", "/")
-                run_all_case("chrome")
+                run_all_case(input_browser[1], input_browser[2], input_browser[3])
             elif input_browser[1] == "firefox":
                 root_dir = root_dir.replace("\\", "/")
-                run_all_case("firefox")
+                run_all_case(input_browser[1], input_browser[2], input_browser[3])
             elif input_browser[1] == "ie":
                 root_dir.replace("\\", "/")
                 root_dir = root_dir.replace("\\", "/")
-                run_all_case("internet explorer")
+                run_all_case("ie", input_browser[2], input_browser[3])
             else:
                 logging.error("参数错误，请重新输入！！！")
         except Exception as e:
             logging.error("命令行传参错误信息：{}".format(e))
     else:
-        run_all_case("chrome")
+        run_all_case("chrome", "close", "remote")
 
 
 if __name__ == "__main__":

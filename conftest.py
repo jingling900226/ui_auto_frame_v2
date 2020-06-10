@@ -25,8 +25,12 @@ def pytest_addoption(parser):
     @param parser:
     @return:
     """
+    # 浏览器选项
     parser.addoption("--browser", action="store", default="chrome", help="browser option: firefox or chrome or ie")
+    # 是否开启浏览器界面选项
     parser.addoption("--browser_opt", action="store", default="open", help="browser GUI open or close")
+    # driver选项，本地单例还是多线程模式
+    parser.addoption("--type_driver", action="store", default="local", help="type of driver: local or remote")
 
 
 def pytest_collection_modifyitems(items):
@@ -45,58 +49,53 @@ def pytest_collection_modifyitems(items):
 @pytest.fixture(scope="function")
 def function_driver(request):
     """
-    非分布式driver注入
+    driver注入
     @param request:
     @return:
     """
     browser = request.config.getoption("--browser")
+    # 用于本地启动是否开启浏览器设置，根据命令行传参，browser_opt判断，默认open
     browser_opt = request.config.getoption("--browser_opt")
     print("获取命令行传参：{}".format(request.config.getoption("--browser")))
-    # 是否开启浏览器设置，根据命令行传参，browser_opt判断，默认open
-    if browser_opt == "open":
-        if browser == "chrome":
-            driver = webdriver.Chrome()
-        elif browser == "firefox":
-            driver = webdriver.Firefox()
-        elif browser == "ie":
-            driver = webdriver.Ie()
+    type_driver = request.config.getoption("--type_driver")
+    # 判断是本地还是远程
+    if type_driver == "local":
+        if browser_opt == "open":
+            if browser == "chrome":
+                driver = webdriver.Chrome()
+            elif browser == "firefox":
+                driver = webdriver.Firefox()
+            elif browser == "ie":
+                driver = webdriver.Ie()
+            else:
+                logging.info("发送错误浏览器参数：{}".format(browser))
         else:
-            logging.info("发送错误浏览器参数：{}".format(browser))
+            if browser == "chrome":
+                chrome_options = CO()
+                chrome_options.add_argument('--headless')
+                driver = webdriver.Chrome(chrome_options=chrome_options)
+            elif browser == "firefox":
+                firefox_options = FO()
+                firefox_options.add_argument('--headless')
+                driver = webdriver.Firefox(firefox_options=firefox_options)
+            elif browser == "ie":
+                ie_options = IEO()
+                ie_options.add_argument('--headless')
+                driver = webdriver.Ie(ie_options=ie_options)
+            else:
+                logging.info("发送错误浏览器参数：{}".format(browser))
+        yield driver
+        # driver.close()
+        driver.quit()
+    elif type_driver == "remote":
+        driver = Remote(command_executor=selenium_config["selenium_config"]["selenium_hub_url"],
+                        desired_capabilities={'platform': 'ANY', 'browserName': browser, 'version': '',
+                                              'javascriptEnabled': True})
+        yield driver
+        # driver.close()
+        driver.quit()
     else:
-        if browser == "chrome":
-            chrome_options = CO()
-            chrome_options.add_argument('--headless')
-            driver = webdriver.Chrome(chrome_options=chrome_options)
-        elif browser == "firefox":
-            firefox_options = FO()
-            firefox_options.add_argument('--headless')
-            driver = webdriver.Firefox(firefox_options=firefox_options)
-        elif browser == "ie":
-            ie_options = IEO()
-            ie_options.add_argument('--headless')
-            driver = webdriver.Ie(ie_options=ie_options)
-        else:
-            logging.info("发送错误浏览器参数：{}".format(browser))
-    yield driver
-    # driver.close()
-    driver.quit()
-
-
-@pytest.fixture(scope="function")
-def function_remote_driver(request):
-    """
-    分布式driver注入
-    @param request:
-    @return:
-    """
-    browser = request.config.getoption("--browser")
-    print("获取命令行传参：{}".format(request.config.getoption("--browser")))
-    driver = Remote(command_executor=selenium_config["selenium_config"]["selenium_hub_url"],
-                    desired_capabilities={'platform': 'ANY', 'browserName': browser, 'version': '',
-                                          'javascriptEnabled': True})
-    yield driver
-    # driver.close()
-    driver.quit()
+        logging.error("driver参数传递错误，请检查参数：{}".format(type_driver))
 
 
 if __name__ == '__main__':
