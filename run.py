@@ -11,7 +11,9 @@ import json
 import time
 import logging
 import pytest
+import zipfile
 from os import path
+from Common.Connect import SSHClient
 from Common.publicMethod import PubMethod
 
 root_dir = os.path.dirname(__file__)
@@ -89,6 +91,46 @@ def import_history_data(history_save_dir, result_dir):
                 print("文件查找失败信息：{}，开始创建目标文件".format(fe))
 
 
+# 压缩文件
+def compress_file(zip_file_name, dir_name):
+    """
+    目录压缩
+    :param zip_file_name: 压缩文件名称和位置
+    :param dir_name: 要压缩的目录
+    :return:
+    """
+    with zipfile.ZipFile(zip_file_name, 'w') as z:
+        for root, dirs, files in os.walk(dir_name):
+            file_path = root.replace(dir_name, '')
+            file_path = file_path and file_path + os.sep or ''
+            for filename in files:
+                z.write(os.path.join(root, filename), os.path.join(file_path, filename))
+    print('压缩成功！')
+
+
+# 报告文件上传
+def up_load_report(local_report_file_path):
+    """
+    报告文件上传
+    :param local_report_file_path: 本地报告文件的路径
+    :return:
+    """
+    ssh_server_info = config_yaml('server_infor')
+    ssh_client = SSHClient(ssh_server_info['host'], ssh_server_info['port'], ssh_server_info['username'],
+                           ssh_server_info['password'])
+    remote_path = ssh_server_info['remote_file_path']
+    # 清空远端目录
+    command0 = 'rm -rf {}/*'.format(remote_path)
+    command1 = 'unzip {}/artifacts.zip -d {}'.format(remote_path, remote_path)
+    command2 = 'mv {}/allure-report/* {}/'.format(remote_path, remote_path)
+    ssh_client.execute_command(command0)
+    ssh_client.upload_file(local_report_file_path, '{}/artifacts.zip'.format(remote_path))
+    time.sleep(3)
+    ssh_client.execute_command(command1)
+    ssh_client.execute_command(command2)
+    ssh_client.close()
+
+
 # 运行命令参数配置
 def run_all_case(browser, browser_opt, type_driver):
     # 测试结果文件存放目录
@@ -109,7 +151,8 @@ def run_all_case(browser, browser_opt, type_driver):
     allure_stories = ["--allure-stories"]
     allure_stories_args = ['']
     allure_path_args = ['--alluredir', result_dir, '--clean-alluredir']
-    test_args = ['-s', '-q', '--browser={}'.format(browser), '--browser_opt={}'.format(browser_opt), '--type_driver={}'.format(type_driver)]
+    test_args = ['-s', '-q', '--browser={}'.format(browser), '--browser_opt={}'.format(browser_opt),
+                 '--type_driver={}'.format(type_driver)]
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
         allure_features_args] + allure_stories + allure_stories_args
@@ -133,7 +176,7 @@ def run_all_case(browser, browser_opt, type_driver):
     save_history(history_dir, report_dir)
     # 打印url，方便直接访问
     url = '本地报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-report/index.html'.format(root_dir.split('/')[-1],
-                                                                                     browser.replace(" ", "_"))
+                                                                                       browser.replace(" ", "_"))
     print(url)
 
 
@@ -164,4 +207,3 @@ def receive_cmd_arg():
 
 if __name__ == "__main__":
     receive_cmd_arg()
-

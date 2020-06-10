@@ -3,5 +3,11 @@ allure_environment:
   description: test description
   username: 848257135@qq.com
   version: V0.12.0
+
 test_info:
   test_URL: https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage
+server_info:
+  host: 10.5.16.105
+  port: 22
+  username: inhand
+  password: 64391099@inhand
