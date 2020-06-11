@@ -75,7 +75,7 @@ def save_history(history_dir, dist_dir):
 # 导入历史数据
 def import_history_data(history_save_dir, result_dir):
     if not os.path.exists(history_save_dir):
-        print("未初始化历史数据！！！进行首次数据初始化")
+        print("未初始化历史数据！！！进行首次数据初始化!!!")
     else:
         # 读取历史数据
         for file in os.listdir(history_save_dir):
@@ -124,7 +124,6 @@ def up_load_report(local_report_file_path):
     command1 = 'unzip {}/artifacts.zip -d {}'.format(remote_path, remote_path)
     command2 = 'mv {}/allure-report/* {}/'.format(remote_path, remote_path)
     ssh_client.execute_command(command0)
-    print("开始文件上传")
     ssh_client.upload_file(local_report_file_path, '{}/artifacts.zip'.format(remote_path))
     time.sleep(3)
     ssh_client.execute_command(command1)
@@ -133,7 +132,15 @@ def up_load_report(local_report_file_path):
 
 
 # 运行命令参数配置
-def run_all_case(browser, browser_opt, type_driver):
+def run_all_case(browser, browser_opt, type_driver, nginx_opt):
+    """
+
+    @param browser:传入浏览器，chrome/firefox/ie
+    @param browser_opt: 浏览器操作，是否开启浏览器操作窗口，关闭操作窗口效率更高，open or close
+    @param type_driver:驱动类型，是本地driver还是远程driver，local or remote
+    @param nginx_opt:是否启用nginx测试报告上传功能，在配置了nginx服务器的情况下开启，enable or disable
+    @return:
+    """
     # 测试结果文件存放目录
     result_dir = os.path.abspath("./Report/{}/allure-result".format(browser))
     # 测试报告文件存放目录
@@ -176,18 +183,24 @@ def run_all_case(browser, browser_opt, type_driver):
     # 保存历史数据
     save_history(history_dir, report_dir)
     # 报告文件压缩上传
-    print("root_dir:{}".format(root_dir))
-    report_file_path = path.join(root_dir, 'report.zip')
-    compress_file(report_file_path, path.join(root_dir, 'Report'))
-    time.sleep(3)
-    up_load_report(report_file_path)
+    if nginx_opt == "enable":
+        report_file_path = path.join(root_dir, 'report.zip')
+        compress_file(report_file_path, path.join(root_dir, 'Report'))
+        time.sleep(3)
+        up_load_report(report_file_path)
+        nginx_report_url = 'http://10.5.16.224/ui/{}/allure-report/index.html'.format(browser)
+        print("nginx服务器远端访问地址：{}".format(nginx_report_url))
+        # 删除本地压缩文件
+        if path.exists(report_file_path):
+            os.remove(report_file_path)
+    elif nginx_opt == "disable":
+        logging.info("不开启nginx文件上传功能")
+    else:
+        logging.error("nginx_opt传递参数错误，请检查参数：{}，报告上传nginx服务器失败".format(nginx_opt))
     # 打印url，方便直接访问
     url = '本地报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-report/index.html'.format(root_dir.split('/')[-1],
                                                                                        browser.replace(" ", "_"))
     print(url)
-    # # 删除本地压缩文件
-    # if path.exists(report_file_path):
-    #     os.remove(report_file_path)
 
 
 # 命令行参数运行
@@ -195,24 +208,17 @@ def receive_cmd_arg():
     global root_dir
     input_browser = sys.argv
     if len(input_browser) > 1:
-        try:
-            if input_browser[1] == "chrome":
-                root_dir.replace("\\", "/")
-                root_dir = root_dir.replace("\\", "/")
-                run_all_case(input_browser[1], input_browser[2], input_browser[3])
-            elif input_browser[1] == "firefox":
-                root_dir = root_dir.replace("\\", "/")
-                run_all_case(input_browser[1], input_browser[2], input_browser[3])
-            elif input_browser[1] == "ie":
-                root_dir.replace("\\", "/")
-                root_dir = root_dir.replace("\\", "/")
-                run_all_case("ie", input_browser[2], input_browser[3])
-            else:
-                logging.error("参数错误，请重新输入！！！")
-        except Exception as e:
-            logging.error("命令行传参错误信息：{}".format(e))
+        root_dir = root_dir.replace("\\", "/")
+        if input_browser[1] == "chrome":
+            run_all_case(input_browser[1], input_browser[2], input_browser[3], input_browser[4])
+        elif input_browser[1] == "firefox":
+            run_all_case(input_browser[1], input_browser[2], input_browser[3], input_browser[4])
+        elif input_browser[1] == "ie":
+            run_all_case("ie", input_browser[2], input_browser[3], input_browser[4])
+        else:
+            logging.error("参数错误，请重新输入！！！")
     else:
-        run_all_case("chrome", "close", "local")
+        run_all_case("chrome", "close", "local", "enable")
 
 
 if __name__ == "__main__":

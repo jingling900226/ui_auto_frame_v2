@@ -1,4 +1,4 @@
 cd ..
 cd ..
-python run.py chrome open local
+python run.py chrome open local enable
 pause

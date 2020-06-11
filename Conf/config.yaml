@@ -11,4 +11,5 @@ server_info:
   port: 22
   username: tester
   password: 64391099@inhand
-  remote_file_path: '/home/tester/wangrc/dockerPro/nginx/report'
+  remote_file_path: '/home/tester/wangrc/dockerPro/nginx/report/ui'
+  nginx_report_URL: 'http://10.5.16.224/ui/{}/allure-report/index.html'

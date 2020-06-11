@@ -226,24 +226,69 @@ UI自动化测试框架：pytest+selenium+allure
 
 4. 本地调试/分布式调试/远程分布式调试等操作
 
+    ​	
+
     1. 本地调试
 
-        全局配置conftest.py文件中启用function_driver方法，在TestCases的每个子功能页面模块进行启用driver传参时，使用function_driver方法
-
+        `--browser`参数默认为`local`，全局配置conftest.py文件中启用function_driver方法，在TestCases的每个子功能页面模块进行启用driver传参时，使用function_driver方法
+    
         ```python
-        import pytest
-        from PageObject.Login_page.loginPage import LoginPage
-        
         @pytest.fixture(scope="function")
-        def login_page_class_load(function_driver):
-            login_page = LoginPage(function_driver)
-            yield login_page
+        def function_driver(request):
+            """
+            driver注入
+            @param request:
+            @return:
+        """
+            browser = request.config.getoption("--browser")
+        # 用于本地启动是否开启浏览器设置，根据命令行传参，browser_opt判断，默认open
+            browser_opt = request.config.getoption("--browser_opt")
+        print("获取命令行传参：{}".format(request.config.getoption("--browser")))
+            type_driver = request.config.getoption("--type_driver")
+            # 判断是本地还是远程
+            if type_driver == "local":
+                if browser_opt == "open":
+                    if browser == "chrome":
+                        driver = webdriver.Chrome()
+                    elif browser == "firefox":
+                        driver = webdriver.Firefox()
+                    elif browser == "ie":
+                    driver = webdriver.Ie()
+                    else:
+                    logging.info("发送错误浏览器参数：{}".format(browser))
+                else:
+                    if browser == "chrome":
+                        chrome_options = CO()
+                        chrome_options.add_argument('--headless')
+                        driver = webdriver.Chrome(chrome_options=chrome_options)
+                    elif browser == "firefox":
+                        firefox_options = FO()
+                        firefox_options.add_argument('--headless')
+                        driver = webdriver.Firefox(firefox_options=firefox_options)
+                    elif browser == "ie":
+                        ie_options = IEO()
+                        ie_options.add_argument('--headless')
+                        driver = webdriver.Ie(ie_options=ie_options)
+                    else:
+                        logging.info("发送错误浏览器参数：{}".format(browser))
+                yield driver
+                # driver.close()
+                driver.quit()
+            elif type_driver == "remote":
+                driver = Remote(command_executor=selenium_config["selenium_config"]["selenium_hub_url"],
+                                desired_capabilities={'platform': 'ANY', 'browserName': browser, 'version': '',
+                                                      'javascriptEnabled': True})
+                yield driver
+                # driver.close()
+                driver.quit()
+            else:
+                logging.error("driver参数传递错误，请检查参数：{}".format(type_driver))
         ```
-
+    
     2. 本地分布式调试
-
+    
         全局配置conftest.py文件中启用function_remote_driver方法，在TestCases的每个子功能页面模块进行启用driver传参时，使用function_remote_driver方法
-
+    
         ```python
         import pytest
         from PageObject.Login_page.loginPage import LoginPage
@@ -253,9 +298,9 @@ UI自动化测试框架：pytest+selenium+allure
             login_page = LoginPage(function_remote_driver)
             yield login_page
         ```
-
+    
     3. windows分布式调试
-
+    
         - 执行start_server_windows.bat脚本，启动selenium的hub和node节点
         - 启动脚本的两种方式
           - 直接在pycharm编辑器执行run.py文件

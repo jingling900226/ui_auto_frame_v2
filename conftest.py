@@ -29,7 +29,7 @@ def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser option: firefox or chrome or ie")
     # 是否开启浏览器界面选项
     parser.addoption("--browser_opt", action="store", default="open", help="browser GUI open or close")
-    # driver选项，本地单例还是多线程模式
+    # driver选项，本地还是远程模式
     parser.addoption("--type_driver", action="store", default="local", help="type of driver: local or remote")
 
 
