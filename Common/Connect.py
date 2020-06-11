@@ -35,6 +35,8 @@ class SSHClient:
         :param remote_file: 远端文件路径
         :return:
         """
+        print(local_file)
+        print(remote_file)
         sftp = self.ssh.open_sftp()
         try:
             sftp.put(local_file, remote_file)

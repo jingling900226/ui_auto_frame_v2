@@ -115,7 +115,7 @@ def up_load_report(local_report_file_path):
     :param local_report_file_path: 本地报告文件的路径
     :return:
     """
-    ssh_server_info = config_yaml('server_infor')
+    ssh_server_info = config_yaml['server_info']
     ssh_client = SSHClient(ssh_server_info['host'], ssh_server_info['port'], ssh_server_info['username'],
                            ssh_server_info['password'])
     remote_path = ssh_server_info['remote_file_path']
@@ -124,6 +124,7 @@ def up_load_report(local_report_file_path):
     command1 = 'unzip {}/artifacts.zip -d {}'.format(remote_path, remote_path)
     command2 = 'mv {}/allure-report/* {}/'.format(remote_path, remote_path)
     ssh_client.execute_command(command0)
+    print("开始文件上传")
     ssh_client.upload_file(local_report_file_path, '{}/artifacts.zip'.format(remote_path))
     time.sleep(3)
     ssh_client.execute_command(command1)
@@ -174,10 +175,19 @@ def run_all_case(browser, browser_opt, type_driver):
     modify_report_environment_file(report_dir)
     # 保存历史数据
     save_history(history_dir, report_dir)
+    # 报告文件压缩上传
+    print("root_dir:{}".format(root_dir))
+    report_file_path = path.join(root_dir, 'report.zip')
+    compress_file(report_file_path, path.join(root_dir, 'Report'))
+    time.sleep(3)
+    up_load_report(report_file_path)
     # 打印url，方便直接访问
     url = '本地报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-report/index.html'.format(root_dir.split('/')[-1],
                                                                                        browser.replace(" ", "_"))
     print(url)
+    # # 删除本地压缩文件
+    # if path.exists(report_file_path):
+    #     os.remove(report_file_path)
 
 
 # 命令行参数运行
@@ -202,7 +212,7 @@ def receive_cmd_arg():
         except Exception as e:
             logging.error("命令行传参错误信息：{}".format(e))
     else:
-        run_all_case("chrome", "close", "remote")
+        run_all_case("chrome", "close", "local")
 
 
 if __name__ == "__main__":
