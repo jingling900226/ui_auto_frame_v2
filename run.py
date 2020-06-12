@@ -218,7 +218,7 @@ def receive_cmd_arg():
         else:
             logging.error("参数错误，请重新输入！！！")
     else:
-        run_all_case("chrome", "close", "local", "enable")
+        run_all_case("chrome", "open", "local", "enable")
 
 
 if __name__ == "__main__":

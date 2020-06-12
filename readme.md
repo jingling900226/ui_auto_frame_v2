@@ -4,6 +4,26 @@ UI自动化测试框架：pytest+selenium+allure
 
 ## 项目结构
 
+~~~ mermaid
+graph TD
+	subgraph 模块调用过程
+	
+    登录页面testcase(登录页面testcase)-->|调用|登录页面对象
+    登录页面对象-->base层
+
+    注册页面testcase(注册页面testcase)-->|调用|注册页面对象
+	注册页面对象-->base层
+    购买页面testcase(购买页面testcase)-->|调用|购买页面对象
+	购买页面对象-->base层
+
+    client5(模块测试case)-->|调用|PageObject层
+
+    PageObject层-->|调用|base层((base层:基础方法))
+    end
+~~~
+
+
+
 整个框架主要分为三层：Base层、PageObject层、TestCase层，采用传统的互联网的垂直架构模式。
 
 - 元素公共操作方法封装存放在Base层
@@ -118,8 +138,6 @@ UI自动化测试框架：pytest+selenium+allure
 
 - `start_run_all_browser.bat`：启动三种浏览器本地测试脚本
 
-- `start_run_all_browser.py`：启动三种浏览器远程docker环境分布式测试脚本
-
 - `start_server_docker.py`：远程docker环境，进行seleniumdocker环境镜像的拉取和配置
 
 - `start_server_windows.bat`：启动本地分布式hub与node节点的脚本
@@ -224,88 +242,64 @@ UI自动化测试框架：pytest+selenium+allure
 
         脚本会自动检查docker镜像仓库是否含有所需镜像，自动拉取，自动创建所需容器，以前创建的含有selenium名字的容器会被删除
 
-4. 本地调试/分布式调试/远程分布式调试等操作
-
-    ​	
+6. 本地调试/分布式调试/远程分布式调试等操作
 
     1. 本地调试
 
-        `--browser`参数默认为`local`，全局配置conftest.py文件中启用function_driver方法，在TestCases的每个子功能页面模块进行启用driver传参时，使用function_driver方法
-    
-        ```python
-        @pytest.fixture(scope="function")
-        def function_driver(request):
+        run.py文件中run_all_case(browser, browser_opt, type_driver, nginx_opt)方法参数说明：
+
+        ~~~ python
+        # 运行命令参数配置
+        def run_all_case(browser, browser_opt, type_driver, nginx_opt):
             """
-            driver注入
-            @param request:
-            @return:
-        """
-            browser = request.config.getoption("--browser")
-        # 用于本地启动是否开启浏览器设置，根据命令行传参，browser_opt判断，默认open
-            browser_opt = request.config.getoption("--browser_opt")
-        print("获取命令行传参：{}".format(request.config.getoption("--browser")))
-            type_driver = request.config.getoption("--type_driver")
-            # 判断是本地还是远程
-            if type_driver == "local":
-                if browser_opt == "open":
-                    if browser == "chrome":
-                        driver = webdriver.Chrome()
-                    elif browser == "firefox":
-                        driver = webdriver.Firefox()
-                    elif browser == "ie":
-                    driver = webdriver.Ie()
-                    else:
-                    logging.info("发送错误浏览器参数：{}".format(browser))
-                else:
-                    if browser == "chrome":
-                        chrome_options = CO()
-                        chrome_options.add_argument('--headless')
-                        driver = webdriver.Chrome(chrome_options=chrome_options)
-                    elif browser == "firefox":
-                        firefox_options = FO()
-                        firefox_options.add_argument('--headless')
-                        driver = webdriver.Firefox(firefox_options=firefox_options)
-                    elif browser == "ie":
-                        ie_options = IEO()
-                        ie_options.add_argument('--headless')
-                        driver = webdriver.Ie(ie_options=ie_options)
-                    else:
-                        logging.info("发送错误浏览器参数：{}".format(browser))
-                yield driver
-                # driver.close()
-                driver.quit()
-            elif type_driver == "remote":
-                driver = Remote(command_executor=selenium_config["selenium_config"]["selenium_hub_url"],
-                                desired_capabilities={'platform': 'ANY', 'browserName': browser, 'version': '',
-                                                      'javascriptEnabled': True})
-                yield driver
-                # driver.close()
-                driver.quit()
-            else:
-                logging.error("driver参数传递错误，请检查参数：{}".format(type_driver))
-        ```
-    
-    2. 本地分布式调试
-    
-        全局配置conftest.py文件中启用function_remote_driver方法，在TestCases的每个子功能页面模块进行启用driver传参时，使用function_remote_driver方法
-    
-        ```python
-        import pytest
-        from PageObject.Login_page.loginPage import LoginPage
         
-        @pytest.fixture(scope="function")
-        def login_page_class_load(function_remote_driver):
-            login_page = LoginPage(function_remote_driver)
-            yield login_page
+            @param browser:传入浏览器，chrome/firefox/ie
+            @param browser_opt: 浏览器操作，是否开启浏览器操作窗口，关闭操作窗口效率更高，open or close
+            @param type_driver:驱动类型，是本地driver还是远程driver，local or remote
+            @param nginx_opt:是否启用nginx测试报告上传功能，在配置了nginx服务器的情况下开启，enable or disable
+            @return:
+            """
+        ~~~
+
+        本地调试时，先指定浏览器的版本（默认为Chrome），是否开启浏览器执行界面（默认open），是否启用node节点的driver（默认local），是否启用nginx测试报告上传功能（默认enable），全局配置conftest.py会根据参数进行启用浏览器、界面开启、driver指定、nginx报告上传功能
+
+        ```python
+        # 命令行参数运行
+        def receive_cmd_arg():
+            global root_dir
+            input_browser = sys.argv
+            if len(input_browser) > 1:
+                root_dir = root_dir.replace("\\", "/")
+                if input_browser[1] == "chrome":
+                    run_all_case(input_browser[1], input_browser[2], input_browser[3], input_browser[4])
+                elif input_browser[1] == "firefox":
+                    run_all_case(input_browser[1], input_browser[2], input_browser[3], input_browser[4])
+                elif input_browser[1] == "ie":
+                    run_all_case("ie", input_browser[2], input_browser[3], input_browser[4])
+                else:
+                    logging.error("参数错误，请重新输入！！！")
+            else:
+                run_all_case("chrome", "close", "local", "enable")
+        
         ```
-    
-    3. windows分布式调试
-    
+
+    2. windows分布式调试
+
         - 执行start_server_windows.bat脚本，启动selenium的hub和node节点
         - 启动脚本的两种方式
           - 直接在pycharm编辑器执行run.py文件
           - 执行start_run_all_browser.bat，启动三个浏览器进行测试（ps:IE需要进行浏览器设置，才可进行自动化脚本运行）
           - 直接使用命令行传参，在terminal界面执行，python run.py firefox(默认使用chrome执行脚本，如果需要选择不同的浏览器，需要进行指定)
+
+        3.linux分布式调试
+
+        - 前置条件：已经有docker运行环境，如果有selenium的hub/node节点，直接指定即可，如果没有hub节点和node节点，可以执行start_server_docker.py文件，进行镜像拉取与容器启动，docker的配置文件与selenium的配置文件放置在Conf下的selenium_config.yaml文件内
+        - run.py中run_all_case(browser, browser_opt, type_driver, nginx_opt)方法参指定说明
+          - browser：选择需要执行的浏览器，会默认调用docker中的该浏览器容器，有hub节点进行负载均衡
+          - browser_opt：是否开启浏览器界面，开启之后看不到界面，需要使用vnc viewer进行查看容器中浏览器的执行过程
+          - type_driver：分布式调试需要指定参数为remote，远程driver
+          - nginx_opt：如果你有nginx服务器配置，可以开启该功能
+        - selenium_config.yaml：selenium_hub_url需要修改为docker环境中，selenium/hub节点的外部访问IP+端口
 
 ### 查看Linux下浏览器运行的图形界面
 
