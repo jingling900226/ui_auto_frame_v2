@@ -7,17 +7,13 @@ UI自动化测试框架：pytest+selenium+allure
 ~~~ mermaid
 graph TD
 	subgraph 模块调用过程
-	
     登录页面testcase(登录页面testcase)-->|调用|登录页面对象
     登录页面对象-->base层
-
     注册页面testcase(注册页面testcase)-->|调用|注册页面对象
 	注册页面对象-->base层
     购买页面testcase(购买页面testcase)-->|调用|购买页面对象
 	购买页面对象-->base层
-
     client5(模块测试case)-->|调用|PageObject层
-
     PageObject层-->|调用|base层((base层:基础方法))
     end
 ~~~
