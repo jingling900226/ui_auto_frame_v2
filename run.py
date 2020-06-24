@@ -12,6 +12,7 @@ import time
 import logging
 import pytest
 import zipfile
+import datetime
 from os import path
 from Common.Connect import SSHClient
 from Common.publicMethod import PubMethod
@@ -20,6 +21,7 @@ root_dir = os.path.dirname(__file__)
 config_yaml = PubMethod.read_yaml("./Conf/config.yaml")
 
 
+# 修改allure环境变量
 def modify_report_environment_file(report_widgets_dir):
     """
     向environment.json文件添加测试环境配置，展现在allure测试报告中
@@ -91,6 +93,37 @@ def import_history_data(history_save_dir, result_dir):
                 print("文件查找失败信息：{}，开始创建目标文件".format(fe))
 
 
+# 从nginx服务器下载远程服务器目录中的历史数据
+def import_remote_history_data(local_file_dir, type='password'):
+    """
+    从docker容器映射的服务器本地存储目录中，下载文件到本地pycharm项目路劲中
+    :param local_file_dir: 本地文件目录
+    :param remote_file_dir: 远程服务器文件目录
+    :param type:
+    :return:
+    """
+    server_info = config_yaml['server_info']
+    remote_report_dir = config_yaml["server_info"]["remote_file_path"]
+    remote_history_dir = os.path.join(remote_report_dir, "chrome", "allure-report/history").replace("\\", "/")
+    print("remote_history_dir:{}".format(remote_history_dir))
+    sftp = PubMethod.connect_server(server_info, type)
+    files = sftp.listdir(remote_history_dir)
+    for file in files:
+        if 'json' in file:
+            local_file_path = os.path.join(local_file_dir, file)
+            remote_file_path = remote_history_dir + '/%s' % file
+            try:
+                sftp.get(remote_file_path, local_file_path)
+            except Exception as e:
+                print("download error!", e)
+                break
+        else:
+            pass
+    sftp.close()
+    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+          '从%s下载的日志文件已经保存到%s！' % (server_info['host'], local_file_dir))
+
+
 # 压缩文件
 def compress_file(zip_file_name, dir_name):
     """
@@ -145,13 +178,13 @@ def run_all_case(browser, browser_opt, type_driver, nginx_opt):
     result_dir = os.path.abspath("./Report/{}/allure-result".format(browser))
     # 测试报告文件存放目录
     report_dir = os.path.abspath("./Report/{}/allure-report".format(browser))
-    # 测试历史结果文件存放目录，用于生成趋势图
+    # 本地测试历史结果文件存放目录，用于生成趋势图
     history_dir = os.path.abspath("./Report/history/{}".format(browser))
     PubMethod.create_dirs(history_dir)
     # 定义测试用例features集合
     allure_features = ["--allure-features"]
     allure_features_list = [
-        # 'Register_page_case',
+        'Register_page_case',
         'Login_page_case'
     ]
     allure_features_args = ",".join(allure_features_list)
@@ -167,7 +200,14 @@ def run_all_case(browser, browser_opt, type_driver, nginx_opt):
     # 使用pytest.main
     pytest.main(run_args)
     # 导入历史数据
-    import_history_data(history_dir, result_dir)
+    if nginx_opt == "enable":
+        # 导入远程历史数据
+        import_remote_history_data(result_dir)
+    elif nginx_opt == "disable":
+        # 导入本地历史数据
+        import_history_data(history_dir, result_dir)
+    else:
+        print("nginx参数错误")
     # 生成allure报告，需要系统执行命令--clean会清楚以前写入environment.json的配置
     cmd = 'allure generate ./Report/{}/allure-result -o ./Report/{}/allure-report --clean'.format(
         browser.replace(" ", "_"),
@@ -223,3 +263,4 @@ def receive_cmd_arg():
 
 if __name__ == "__main__":
     receive_cmd_arg()
+

@@ -12,3 +12,9 @@ test_ui_auto:
     expire_in: 1 week
   only:
     - luozw-ui-auto
+check_ui_result:
+  stage: post
+  script:
+    - python ci_result.py
+  only:
+    - luozw-ui-auto

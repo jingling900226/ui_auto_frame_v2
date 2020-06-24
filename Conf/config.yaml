@@ -1,4 +1,4 @@
-allure_environment:
+﻿allure_environment:
   URL: https://github.com/chineseluo/ui_auto_frame_v2
   description: test description
   username: 848257135@qq.com
@@ -13,3 +13,11 @@ server_info:
   password: 64391099@inhand
   remote_file_path: '/home/tester/wangrc/dockerPro/nginx/report/ui'
   nginx_report_URL: 'http://10.5.16.224/ui/{}/allure-report/index.html'
+mail_info:
+  #发送邮件信息
+  smtp_server: smtp.exmail.qq.com
+  imap_server: imap.exmail.qq.com
+  sender: XXX
+  receiver: XXX
+  email_username: XXX
+  email_password: XXX
