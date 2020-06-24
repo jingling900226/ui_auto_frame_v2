@@ -13,6 +13,7 @@ from Common.publicMethod import PubMethod
 from selenium.webdriver.chrome.options import Options as CO
 from selenium.webdriver.firefox.options import Options as FO
 from selenium.webdriver.ie.options import Options as IEO
+from selenium.webdriver.firefox.firefox_profile import FirefoxProfile as FP
 
 # 读取selenium分布式配置文件
 selenium_config_path = os.path.join(os.path.dirname(__file__), "Conf", "selenium_config.yaml")
@@ -62,26 +63,46 @@ def function_driver(request):
     if type_driver == "local":
         if browser_opt == "open":
             if browser == "chrome":
-                driver = webdriver.Chrome()
+                # 跳过非安全的https安全校验
+                chrome_options = CO()
+                chrome_options.add_argument("--ignore-certificate-errors")
+                driver = webdriver.Chrome(chrome_options=chrome_options)
             elif browser == "firefox":
-                driver = webdriver.Firefox()
+                # 跳过非安全的https安全校验
+                profile = FP()
+                profile.accept_untrusted_certs = True
+                driver = webdriver.Firefox(firefox_profile=profile)
             elif browser == "ie":
-                driver = webdriver.Ie()
+                # 跳过非安全的https安全校验
+                capabilities = webdriver.DesiredCapabilities()
+                capabilities['acceptSslCerts'] = True
+                driver = webdriver.Ie(capabilities=capabilities)
             else:
                 logging.info("发送错误浏览器参数：{}".format(browser))
         else:
             if browser == "chrome":
+                # 不开启浏览器窗口，后台运行测试代码
                 chrome_options = CO()
                 chrome_options.add_argument('--headless')
+                # 跳过非安全的https安全校验
+                chrome_options.add_argument('--ignore-certificate-errors')
                 driver = webdriver.Chrome(chrome_options=chrome_options)
             elif browser == "firefox":
+                # 不开启浏览器窗口，后台运行测试代码
                 firefox_options = FO()
                 firefox_options.add_argument('--headless')
-                driver = webdriver.Firefox(firefox_options=firefox_options)
+                # 跳过非安全的https安全校验
+                profile = FP()
+                profile.accept_untrusted_certs = True
+                driver = webdriver.Firefox(firefox_options=firefox_options, firefox_profile=profile)
             elif browser == "ie":
+                # 不开启浏览器窗口，后台运行测试代码
                 ie_options = IEO()
                 ie_options.add_argument('--headless')
-                driver = webdriver.Ie(ie_options=ie_options)
+                # 跳过非安全的https安全校验
+                capabilities = webdriver.DesiredCapabilities()
+                capabilities['acceptSslCerts'] = True
+                driver = webdriver.Ie(ie_options=ie_options, capabilities=capabilities)
             else:
                 logging.info("发送错误浏览器参数：{}".format(browser))
         yield driver
