@@ -93,37 +93,6 @@ def import_history_data(history_save_dir, result_dir):
                 print("文件查找失败信息：{}，开始创建目标文件".format(fe))
 
 
-# 从nginx服务器下载远程服务器目录中的历史数据
-def import_remote_history_data(local_file_dir, type='password'):
-    """
-    从docker容器映射的服务器本地存储目录中，下载文件到本地pycharm项目路劲中
-    :param local_file_dir: 本地文件目录
-    :param remote_file_dir: 远程服务器文件目录
-    :param type:
-    :return:
-    """
-    server_info = config_yaml['server_info']
-    remote_report_dir = config_yaml["server_info"]["remote_file_path"]
-    remote_history_dir = os.path.join(remote_report_dir, "chrome", "allure-report/history").replace("\\", "/")
-    print("remote_history_dir:{}".format(remote_history_dir))
-    sftp = PubMethod.connect_server(server_info, type)
-    files = sftp.listdir(remote_history_dir)
-    for file in files:
-        if 'json' in file:
-            local_file_path = os.path.join(local_file_dir, file)
-            remote_file_path = remote_history_dir + '/%s' % file
-            try:
-                sftp.get(remote_file_path, local_file_path)
-            except Exception as e:
-                print("download error!", e)
-                break
-        else:
-            pass
-    sftp.close()
-    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-          '从%s下载的日志文件已经保存到%s！' % (server_info['host'], local_file_dir))
-
-
 # 压缩文件
 def compress_file(zip_file_name, dir_name):
     """
@@ -200,14 +169,7 @@ def run_all_case(browser, browser_opt, type_driver, nginx_opt):
     # 使用pytest.main
     pytest.main(run_args)
     # 导入历史数据
-    if nginx_opt == "enable":
-        # 导入远程历史数据
-        import_remote_history_data(result_dir)
-    elif nginx_opt == "disable":
-        # 导入本地历史数据
-        import_history_data(history_dir, result_dir)
-    else:
-        print("nginx参数错误")
+    import_history_data(history_dir, result_dir)
     # 生成allure报告，需要系统执行命令--clean会清楚以前写入environment.json的配置
     cmd = 'allure generate ./Report/{}/allure-result -o ./Report/{}/allure-report --clean'.format(
         browser.replace(" ", "_"),
